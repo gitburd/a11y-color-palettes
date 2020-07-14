@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
+import ContrastChecker from './comppnents/ContrastChecker'
 
 function App() {
   return (
     <div>
-      <h1>App</h1>
+      <ContrastChecker/>
     </div>
   );
 }
 
 export default App;
+
