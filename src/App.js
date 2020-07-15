@@ -22,13 +22,19 @@ class App extends Component {
     const {backgroundColor, textColor} = this.state
     return (
       <div>
+        <div style={{width:'50%'}}>
         <Color 
           color={'#A5AF76'} 
           setBackgroundColor={this.setBackgroundColor} 
           setTextColor={this.setTextColor}
         />
+       <Color 
+          color={'#5A5089'} 
+          setBackgroundColor={this.setBackgroundColor} 
+          setTextColor={this.setTextColor}
+        />
         <Color 
-          color={'#fff'} 
+          color={'#FFF'} 
           setBackgroundColor={this.setBackgroundColor} 
           setTextColor={this.setTextColor}
         />
@@ -37,11 +43,42 @@ class App extends Component {
           setBackgroundColor={this.setBackgroundColor} 
           setTextColor={this.setTextColor}
         />
-        <Color 
+         <Color 
           color={'#741B47'} 
           setBackgroundColor={this.setBackgroundColor} 
           setTextColor={this.setTextColor}
         />
+         <Color 
+          color={'#8BE4B8'} 
+          setBackgroundColor={this.setBackgroundColor} 
+          setTextColor={this.setTextColor}
+        />
+        <Color 
+          color={'#eed9b5'} 
+          setBackgroundColor={this.setBackgroundColor} 
+          setTextColor={this.setTextColor}
+        />
+       
+        <Color 
+          color={'#3a2a0d'} 
+          setBackgroundColor={this.setBackgroundColor} 
+          setTextColor={this.setTextColor}
+        /> 
+
+        </div>
+       
+
+        <Color 
+          color={'#86239a'} 
+          setBackgroundColor={this.setBackgroundColor} 
+          setTextColor={this.setTextColor}
+        />
+        <Color 
+          color={'#155b56'} 
+          setBackgroundColor={this.setBackgroundColor} 
+          setTextColor={this.setTextColor}
+        />
+       
         <ContrastChecker 
           backgroundColor={backgroundColor} 
           textColor={textColor}
