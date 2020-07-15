@@ -3,20 +3,18 @@
 // set as text color and pass back to app
 import React, {useState} from 'react'
 import {getRGB, getLuminacity, getHSL} from '../helpers/ColorConversions'
-import {getColorSuggetions} from '../helpers/ColorSuggestions'
+
 var wcagContrast = require("wcag-contrast")
 
-const Color = ({color, setBackgroundColor, setTextColor}) => {
-    const [complements, setComplements] = useState([])
-    const [luminacity, setLuminacity] = useState(1)
+const Color = ({color, setBackgroundColor, setTextColor, setContrastColor}) => { 
 
     const getComplements = (color) => {
-        let RGB = getRGB(color)
-        let luminacity = getLuminacity(RGB)
-        // console.log(luminacity)
-        let HSL = getHSL(RGB)
-        console.log('h',HSL)
-        setComplements(getColorSuggetions(HSL), console.log(complements));
+        // let RGB = getRGB(color)
+        // let luminacity = getLuminacity(RGB)
+        // // console.log(luminacity)
+        // let HSL = getHSL(RGB)
+        // console.log('h',HSL)
+        setContrastColor(color);
     }
 
     let textHexColor
@@ -44,25 +42,10 @@ const Color = ({color, setBackgroundColor, setTextColor}) => {
                     onClick={()=>getComplements(color)}
                     className='btn'
                 >
-                    Get complement
+                    MORE
                 </button>
             
             </div>
-
-            <h1>complements</h1>
-
-{complements && complements.length}
-            {complements && complements.length > 0 && (
-                complements.map(color => (
-                    <div style={{backgroundColor:color}}>
-                        COMP:
-                        {color}
-                    </div>
-                ))    
-            )}
-            
-
-
         </div>
        
     )

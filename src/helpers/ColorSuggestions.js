@@ -52,6 +52,7 @@ export const getColorSuggetions = (HSL) => {
 complements.push([H, S, L1], [H, S, L2])
 complements.push([H4, S, L1], [H4, S, L2])
 complements.push([H1, S, L1], [H1, S, L2])
+complements.push([H2, S, L1], [H2, S, L2])
 complements.push([H3, S, L1], [H3, S, L2])
 
 
