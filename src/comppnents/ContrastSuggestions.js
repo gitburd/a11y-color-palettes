@@ -17,13 +17,14 @@ const ContrastSuggestions = ({contrastColor, setPickerColor, toggleShowColorPick
     }
 
     return (
-        <div >
+        <div>
             <div style={{backgroundColor:hex, color:textHexColor, padding:'5px 10px', fontSize:'12px'}}> <h2>Contrast: {hex}</h2></div>
             <div className="contrast-grid">
                 {suggestions && suggestions.length > 0 && (
-                suggestions.map(color => (
+                suggestions.map((color,idx) => (
                     
-                    <div 
+                    <div
+                        key={idx} 
                         style={{color:hex, backgroundColor:color, border:`1px solid ${hex}`, padding:'10px'}}
                     >
                         {color}

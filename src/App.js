@@ -17,7 +17,7 @@ class App extends Component {
     },
     pickerColor:'#fff',
     newColor:{},
-    showColorPicker:true
+    showColorPicker:true,
   }
 
   setBackgroundColor = (backgroundColor) => {
@@ -114,7 +114,7 @@ class App extends Component {
             />
             <Color 
               color={{
-                hex:'#fff',
+              hex:'#fff',
               rgb:{a:1,b:255,g:255,r:255},
               hsl: {a:1, h:0, l:100, s:100}
               }} 
