@@ -1,19 +1,23 @@
 var convert = require('color-convert');
+var wcagContrast = require("wcag-contrast")
 
-export const getColorSuggetions = (HSL) => {
-    const H = HSL.h;
-    let S = HSL.s;
-    let L = HSL.l;
- 
+
+export const getColorSuggetions = (color) => {
+    const H = color.hsl.h;
+    let S = color.hsl.s;
+    let L = color.hsl.l * 100;
+    let hex = color.hex;
+    console.log(H,S,L, hex)
+    
     let complements = []
 
     let H1 = H + 120
     if(H1 > 360){ H1 -= 360}
     
-    let H2 = H - 120
+    let H2 = H + 260
     if(H2 < 0){ H2 += 360}
     
-    let H3 = H - 90
+    let H3 = H + 320
     if(H3 < 0){ H3 += 360}
 
     let H4 = H + 90
@@ -21,10 +25,12 @@ export const getColorSuggetions = (HSL) => {
 
     let L1
     let L2
-
-    console.log('hey', L, S)
-    if(L===1 && S === 0){L+=100}
-    if(L < 10){
+    if(L >= 30 && L < 50){
+        const Ls = findMidRangeComplements(hex)
+        L1 = Ls[0]
+        L2 = Ls[1]
+    }
+    else if(L < 10){
         L1 = L + 70;
         L2 = L + 80;
     } else if(L < 20 ){
@@ -33,15 +39,9 @@ export const getColorSuggetions = (HSL) => {
     } else if (L < 30 ){
         L1 = L + 58;
         L2 = L + 66;
-    } else if (L >= 30 && L < 50){
-        L1 = 88;
-        L2 = 94;
-    } else if (L >= 50 && L < 70){
-        L1 = 20;
-        L2 = 10;
     } else if (L < 80){
         L1 = L - 50;
-        L2 = L - 60;
+        L2 = L - 58;
     } else if (L < 90){
         L1 = L - 60;
         L2 = L - 68;
@@ -50,20 +50,27 @@ export const getColorSuggetions = (HSL) => {
         L2 = L - 83;
     }
 
-    if(S < 15){S += 80}
-    if(S > 85){S -= 85}
+    if(S < 15){S += 50}
+    if(S > 85){S -= 75}
     complements.push([H, S, L1], [H, S, L2])
     complements.push([H4, S, L1], [H4, S, L2])
     complements.push([H1, S, L1], [H1, S, L2])
     complements.push([H2, S, L1], [H2, S, L2])
     complements.push([H3, S, L1], [H3, S, L2])
 
-
     return complements.map((HSL) => `#${convert.hsl.hex(HSL)}`)
-// console.log(complements)
-// return complements
 }
 
+const findMidRangeComplements = (hex) => {
+   console.log('hex', hex)
+    const whiteHexContrast = wcagContrast.hex('#fff', hex);
+    const blackHexContrast = wcagContrast.hex('#000', hex);
+
+    console.log(whiteHexContrast, blackHexContrast)
+    console.log(whiteHexContrast > blackHexContrast)
+
+    return whiteHexContrast > blackHexContrast ? [80,90] : [10,25]
+}
 
 
 

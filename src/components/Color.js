@@ -7,15 +7,10 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 var wcagContrast = require("wcag-contrast")
 
-const Color = ({color, setBackgroundColor, setTextColor, setContrastColor, setPickerColor}) => { 
+const Color = ({color, setBackgroundColor, setTextColor, deleteColor, setContrastColor, setPickerColor}) => { 
     const {hex} = color
 
     const getComplements = (color) => {
-        // let RGB = getRGB(color)
-        // let luminacity = getLuminacity(RGB)
-        // // console.log(luminacity)
-        // let HSL = getHSL(RGB)
-        // console.log('h',HSL)
         setContrastColor(color);
     }
 
@@ -65,7 +60,7 @@ const Color = ({color, setBackgroundColor, setTextColor, setContrastColor, setPi
                   </CopyToClipboard>
                 
                 <button
-                    onClick={()=>getComplements(color)}
+                    onClick={()=>deleteColor(hex)}
                     className='color-btn'
                 >
                    Delete

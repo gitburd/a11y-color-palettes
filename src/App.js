@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import './App.css';
-import ContrastChecker from './comppnents/ContrastChecker'
-import Color from './comppnents/Color'
-import ContrastSuggestions from './comppnents/ContrastSuggestions'
-import ColorPickerDisplay from './comppnents/ColorPickerDisplay'
+import ContrastChecker from './components/ContrastChecker'
+import ContrastSuggestions from './components/ContrastSuggestions'
+import ColorPickerDisplay from './components/ColorPickerDisplay'
+import Palette from './components/Palette'
 import { SketchPicker, ChromePicker} from 'react-color'
 
 class App extends Component {
@@ -16,22 +16,53 @@ class App extends Component {
       hsl: {a:1, h:0, l:1, s:0}
     },
     pickerColor:{hex:'#fff'},
-    newColor:{},
+    newColor: {
+      hex:'#ffffff',
+      rgb:{a:1,b:255,g:255,r:255},
+      hsl: {a:1, h:0, l:1, s:0}
+    },
     showColorPicker:true,
-    palette:['#fff']
+    palette:[
+      {
+        hex:'#ffffff',
+        rgb:{a:1,b:255,g:255,r:255},
+        hsl: {a:1, h:0, l:1, s:0}
+      },
+      {
+        hex:'#000',
+        rgb:{a:1,b:0,g:0,r:0},
+        hsl: {a:1, h:0, l:0, s:0}
+      }
+    ]
   }
 
   componentDidMount(){
-    let palette = JSON.parse(localStorage.getItem('palette')) || ['color', 'color']
+    let palette = JSON.parse(localStorage.getItem('palette')) ||  
+    [
+      {
+        hex:'#ffffff',
+        rgb:{a:1,b:255,g:255,r:255},
+        hsl: {a:1, h:0, l:1, s:0}
+      },
+      {
+        hex:'#000',
+        rgb:{a:1,b:0,g:0,r:0},
+        hsl: {a:1, h:0, l:0, s:0}
+      }
+    ]
     let pickerColor = JSON.parse(localStorage.getItem('pickerColor')) || {hex:'#fff'}
     let backgroundColor = JSON.parse(localStorage.getItem('backgroundColor')) || '#FFF'
     let textColor = JSON.parse(localStorage.getItem('textColor')) || '#000'
-    {this.setState({palette, pickerColor, backgroundColor, textColor})}
+
+    this.setState({
+      palette, 
+      pickerColor, 
+      backgroundColor, 
+      textColor
+    })
   }
 
   componentDidUpdate(){
-    console.log('hi')
-    
     localStorage.setItem('palette', JSON.stringify(this.state.palette))
     localStorage.setItem('pickerColor', JSON.stringify(this.state.pickerColor))
     localStorage.setItem('backgroundColor', JSON.stringify(this.state.backgroundColor))
@@ -39,7 +70,6 @@ class App extends Component {
   }
 
   setBackgroundColor = (backgroundColor) => {
-    console.log('set bgc')
     this.setState({backgroundColor})
   }
 
@@ -52,22 +82,23 @@ class App extends Component {
   }
 
   setPickerColor = (hex) => {
-    console.log('set picker color', hex)
     this.setState({pickerColor:hex, showColorPicker:true},this.handleColorPickerChange(hex))
-  }
-
-  getColorFromPicker = (color) => {
-    console.log(color)
-  }
-
-  toggleShowColorPicker = () => {
-    let showColorPicker = !this.state.showColorPicker
-    this.setState({showColorPicker})
   }
 
   handleColorPickerChange = (color) => {
     this.setState({pickerColor:color.hex, newColor:color})
   }
+
+  addToPalette = (color) => {
+    let palette = [...this.state.palette,color]
+    this.setState({palette})
+  }
+  removeFromPalette = (color) => {
+    let palette = [...this.state.palette]
+    palette = palette.filter(element => {return element.hex !== color} ) 
+    this.setState({ palette })
+  }
+
 
   render() {
     const {backgroundColor, textColor} = this.state
@@ -75,7 +106,13 @@ class App extends Component {
       <div style={{padding:'1rem'}}>
         <div className='app-grid'>
           <div style={{border:'3px solid'}}>
-            <Color 
+            <Palette 
+              palette = {this.state.palette}
+              setContrastColor = {this.setContrastColor}
+              setPickerColor = {this.setPickerColor} 
+              deleteColor = {this.removeFromPalette}
+            />
+            {/* <Color 
               color={{
                 hex:'#eed9b5',
                 rgb:{a:1,b:181,g:217,r:238},
@@ -140,7 +177,7 @@ class App extends Component {
               setTextColor={this.setTextColor}
               setContrastColor={this.setContrastColor}
               setPickerColor={this.setPickerColor} 
-            />
+            /> */}
 
             <ContrastSuggestions  
               contrastColor={this.state.contrastColor} 
@@ -155,6 +192,8 @@ class App extends Component {
                   setBackgroundColor={this.setBackgroundColor} 
                   setTextColor={this.setTextColor}
                   toggleShowColorPicker={this.toggleShowColorPicker}
+                  addToPalette={this.addToPalette}
+                  newColor={this.state.newColor}
                 />
               <div style={{backgroundColor:this.state.pickerColor}}>
                 <ChromePicker
