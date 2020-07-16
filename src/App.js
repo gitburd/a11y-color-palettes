@@ -56,7 +56,7 @@ class App extends Component {
     return (
       <div style={{padding:'1rem'}}>
         <div className='app-grid'>
-          <div>
+          <div style={{border:'3px solid'}}>
             <Color 
               color={{
                 hex:'#eed9b5',
@@ -66,6 +66,7 @@ class App extends Component {
               setBackgroundColor={this.setBackgroundColor} 
               setTextColor={this.setTextColor}
               setContrastColor={this.setContrastColor}
+              setPickerColor={this.setPickerColor} 
             />
             <Color 
               color={{
@@ -76,6 +77,7 @@ class App extends Component {
               setBackgroundColor={this.setBackgroundColor} 
               setTextColor={this.setTextColor}
               setContrastColor={this.setContrastColor}
+              setPickerColor={this.setPickerColor} 
             />
             <Color 
               color={{
@@ -86,6 +88,7 @@ class App extends Component {
               setBackgroundColor={this.setBackgroundColor} 
               setTextColor={this.setTextColor}
               setContrastColor={this.setContrastColor}
+              setPickerColor={this.setPickerColor} 
             />
             <Color 
               color={{
@@ -96,6 +99,29 @@ class App extends Component {
               setBackgroundColor={this.setBackgroundColor} 
               setTextColor={this.setTextColor}
               setContrastColor={this.setContrastColor}
+              setPickerColor={this.setPickerColor} 
+            />
+            <Color 
+              color={{
+                hex:'#000',
+              rgb:{a:1,b:0,g:0,r:0},
+              hsl: {a:1, h:0, l:0, s:0}
+              }} 
+              setBackgroundColor={this.setBackgroundColor} 
+              setTextColor={this.setTextColor}
+              setContrastColor={this.setContrastColor}
+              setPickerColor={this.setPickerColor} 
+            />
+            <Color 
+              color={{
+                hex:'#fff',
+              rgb:{a:1,b:255,g:255,r:255},
+              hsl: {a:1, h:0, l:100, s:100}
+              }} 
+              setBackgroundColor={this.setBackgroundColor} 
+              setTextColor={this.setTextColor}
+              setContrastColor={this.setContrastColor}
+              setPickerColor={this.setPickerColor} 
             />
 
             <ContrastSuggestions  
@@ -105,20 +131,21 @@ class App extends Component {
             />
           </div>
           <div>
-            {this.state.showColorPicker && 
-              <div style={{backgroundColor:this.state.pickerColor}}>
-                <ChromePicker
-                  color={ this.state.pickerColor}
-                  onChangeComplete={ this.handleColorPickerChange }
-                />
+            {/* {this.state.showColorPicker &&  */}
                 <ColorPickerDisplay 
                   color={this.state.pickerColor}
                   setBackgroundColor={this.setBackgroundColor} 
                   setTextColor={this.setTextColor}
                   toggleShowColorPicker={this.toggleShowColorPicker}
                 />
+              <div style={{backgroundColor:this.state.pickerColor}}>
+                <ChromePicker
+                  color={ this.state.pickerColor}
+                  onChangeComplete={ this.handleColorPickerChange }
+                />
+ 
               </div>
-            }
+            {/* } */}
             <ContrastChecker 
               backgroundColor={backgroundColor} 
               textColor={textColor}

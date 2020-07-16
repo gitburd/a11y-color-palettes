@@ -44,14 +44,35 @@
 }
 
 .display-btn{
-    padding:5px 3px;
-    font-size: 18px;
+    padding:2px;
+    font-size: 16px;
     color: #3A0D34;
-    background-color:#eed9b5;
+    background-color:#fff;
     font-weight: bold;
 }
 
 .display-btn:hover{
     cursor: pointer;
-    opacity: 80%;
+    background-color: #3A0D34;
+    color:#fff;
+}
+
+.color-btn-grid{
+    clear:both;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 0;
+    margin:auto;
+}
+
+.color-btn{
+    font-size: 16px;
+    color: #3A0D34;
+    background-color:#fff;
+}
+
+.color-btn:hover{
+    cursor: pointer;
+    background-color: #3A0D34;
+    color:#fff;
 }

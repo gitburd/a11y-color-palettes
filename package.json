@@ -9,6 +9,7 @@
     "color-convert": "^2.0.1",
     "react": "^16.13.1",
     "react-color": "^2.18.1",
+    "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "wcag-contrast": "^3.0.0"

@@ -2,8 +2,8 @@ var convert = require('color-convert');
 
 export const getColorSuggetions = (HSL) => {
     const H = HSL.h;
-    const S = HSL.s;
-    const L = HSL.l;
+    let S = HSL.s;
+    let L = HSL.l;
  
     let complements = []
 
@@ -22,8 +22,10 @@ export const getColorSuggetions = (HSL) => {
     let L1
     let L2
 
+    console.log('hey', L, S)
+    if(L===1 && S === 0){L+=100}
     if(L < 10){
-        L1 = L + 60;
+        L1 = L + 70;
         L2 = L + 80;
     } else if(L < 20 ){
         L1 = L + 60;
@@ -44,18 +46,20 @@ export const getColorSuggetions = (HSL) => {
         L1 = L - 60;
         L2 = L - 68;
     } else {
-        L1 = L - 67;
-        L2 = L - 67;
+        L1 = L - 72;
+        L2 = L - 83;
     }
 
-complements.push([H, S, L1], [H, S, L2])
-complements.push([H4, S, L1], [H4, S, L2])
-complements.push([H1, S, L1], [H1, S, L2])
-complements.push([H2, S, L1], [H2, S, L2])
-complements.push([H3, S, L1], [H3, S, L2])
+    if(S < 15){S += 80}
+    if(S > 85){S -= 85}
+    complements.push([H, S, L1], [H, S, L2])
+    complements.push([H4, S, L1], [H4, S, L2])
+    complements.push([H1, S, L1], [H1, S, L2])
+    complements.push([H2, S, L1], [H2, S, L2])
+    complements.push([H3, S, L1], [H3, S, L2])
 
 
-return complements.map((HSL) => `#${convert.hsl.hex(HSL)}`)
+    return complements.map((HSL) => `#${convert.hsl.hex(HSL)}`)
 // console.log(complements)
 // return complements
 }

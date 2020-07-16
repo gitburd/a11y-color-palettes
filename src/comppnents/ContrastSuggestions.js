@@ -1,6 +1,6 @@
 import React from 'react'
 import {getColorSuggetions} from '../helpers/ColorSuggestions'
-import {getRGB, getLuminacity, getHSL} from '../helpers/ColorConversions'
+// import {getRGB, getLuminacity, getHSL} from '../helpers/ColorConversions'
 
 const ContrastSuggestions = ({contrastColor, setPickerColor, toggleShowColorPicker}) => {
     var wcagContrast = require("wcag-contrast")
@@ -18,15 +18,22 @@ const ContrastSuggestions = ({contrastColor, setPickerColor, toggleShowColorPick
 
     return (
         <div >
-            <div style={{backgroundColor:contrastColor.hex, color:textHexColor, padding:'10px', width:'400px100%'}}>{contrastColor.hex}</div>
+            <div style={{backgroundColor:hex, color:textHexColor, padding:'5px 10px', fontSize:'12px'}}> <h2>Contrast: {hex}</h2></div>
             <div className="contrast-grid">
                 {suggestions && suggestions.length > 0 && (
                 suggestions.map(color => (
+                    
                     <div 
-                        style={{color:contrastColor.hex, backgroundColor:color, border:`1px solid ${contrastColor.hex}`, padding:'10px'}}
-                        onClick = {()=>onClick(color)}
+                        style={{color:hex, backgroundColor:color, border:`1px solid ${hex}`, padding:'10px'}}
                     >
                         {color}
+                        <button 
+                            className='color-btn'  
+                            style={{width:'40%', float:'right'}}
+                            onClick = {()=>onClick(color)}
+                        >
+                            Pick
+                        </button>
                     </div>
                     ))
                 )}
