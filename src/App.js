@@ -7,7 +7,7 @@ import ColorPickerDisplay from './comppnents/ColorPickerDisplay'
 import { SketchPicker, ChromePicker} from 'react-color'
 
 class App extends Component {
-  state={
+  state = {
     backgroundColor: '#FFF',
     textColor: '#000',
     contrastColor:{
@@ -15,9 +15,27 @@ class App extends Component {
       rgb:{a:1,b:255,g:255,r:255},
       hsl: {a:1, h:0, l:1, s:0}
     },
-    pickerColor:'#fff',
+    pickerColor:{hex:'#fff'},
     newColor:{},
     showColorPicker:true,
+    palette:['#fff']
+  }
+
+  componentDidMount(){
+    let palette = JSON.parse(localStorage.getItem('palette')) || ['color', 'color']
+    let pickerColor = JSON.parse(localStorage.getItem('pickerColor')) || {hex:'#fff'}
+    let backgroundColor = JSON.parse(localStorage.getItem('backgroundColor')) || '#FFF'
+    let textColor = JSON.parse(localStorage.getItem('textColor')) || '#000'
+    {this.setState({palette, pickerColor, backgroundColor, textColor})}
+  }
+
+  componentDidUpdate(){
+    console.log('hi')
+    
+    localStorage.setItem('palette', JSON.stringify(this.state.palette))
+    localStorage.setItem('pickerColor', JSON.stringify(this.state.pickerColor))
+    localStorage.setItem('backgroundColor', JSON.stringify(this.state.backgroundColor))
+    localStorage.setItem('textColor', JSON.stringify(this.state.textColor))
   }
 
   setBackgroundColor = (backgroundColor) => {
