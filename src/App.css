@@ -1,8 +1,9 @@
 .example-text{
-    width:70%;
-    margin:20px auto;
     border: 3px solid;
-    clear:both;
+    clear:both; 
+    /* width:70%;
+    margin:20px auto;
+    */
 }
 
 .btn{
@@ -32,4 +33,25 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: .8rem;
     margin:auto;
+}
+
+.btn-grid{
+    clear:both;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 0;
+    margin:auto;
+}
+
+.display-btn{
+    padding:5px 3px;
+    font-size: 18px;
+    color: #3A0D34;
+    background-color:#eed9b5;
+    font-weight: bold;
+}
+
+.display-btn:hover{
+    cursor: pointer;
+    opacity: 80%;
 }

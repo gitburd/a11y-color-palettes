@@ -1,7 +1,9 @@
+var convert = require('color-convert');
+
 export const getColorSuggetions = (HSL) => {
-    const H = HSL[0];
-    const S = HSL[1];
-    const L = HSL[2];
+    const H = HSL.h;
+    const S = HSL.s;
+    const L = HSL.l;
  
     let complements = []
 
@@ -16,9 +18,6 @@ export const getColorSuggetions = (HSL) => {
 
     let H4 = H + 90
     if(H4 > 360){ H4 -= 360}
-
-    let S1
-    let S2
 
     let L1
     let L2
@@ -56,12 +55,11 @@ complements.push([H2, S, L1], [H2, S, L2])
 complements.push([H3, S, L1], [H3, S, L2])
 
 
-complements = complements.map((HSL) => stringifyHSL(HSL))
-return complements
+return complements.map((HSL) => `#${convert.hsl.hex(HSL)}`)
+// console.log(complements)
+// return complements
 }
 
-const stringifyHSL = (HSL) => {
-    return `HSL(${HSL[0]}, ${HSL[1]}%, ${HSL[2]}%)`
-}
+
 
 

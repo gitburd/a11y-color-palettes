@@ -17,32 +17,29 @@ const Color = ({color, setBackgroundColor, setTextColor, setContrastColor}) => {
         setContrastColor(color);
     }
 
-    let textHexColor
-    if (color[0]==='#'){
-        const whiteHexContrast = wcagContrast.hex('#fff', color);
-        const blackHexContrast = wcagContrast.hex('#000', color);
-        textHexColor = whiteHexContrast > blackHexContrast ? '#fff' : '#000'
-    }
+    const whiteHexContrast = wcagContrast.hex('#fff', color.hex);
+    const blackHexContrast = wcagContrast.hex('#000', color.hex);
+    const textHexColor = whiteHexContrast > blackHexContrast ? '#fff' : '#000'
     
     return (
         <div>
             <div 
-                style={{backgroundColor:color, color:textHexColor, padding:'10px 20px'}}
+                style={{backgroundColor:color.hex, color:textHexColor, padding:'10px 20px'}}
             >
-                <p>{color}</p>
+                <p>{color.hex}</p>
                 <button
-                    onClick={()=>setBackgroundColor(color)}
+                    onClick={()=>setBackgroundColor(color.hex)}
                     className='btn'
                 >Background</button>
                 <button
-                    onClick={()=>setTextColor(color)}
+                    onClick={()=>setTextColor(color.hex)}
                     className='btn'
                 >Text Color</button>
                 <button
                     onClick={()=>getComplements(color)}
                     className='btn'
                 >
-                    MORE
+                   Contrast
                 </button>
             
             </div>
