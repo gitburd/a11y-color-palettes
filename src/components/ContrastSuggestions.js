@@ -6,7 +6,7 @@ const ContrastSuggestions = ({contrastColor, setPickerColor, toggleShowColorPick
     var wcagContrast = require("wcag-contrast")
     const {hsl, rgb, hex} = contrastColor
 
-    const suggestions = getColorSuggetions(hsl);
+    const suggestions = getColorSuggetions(contrastColor);
    
     const whiteHexContrast = wcagContrast.hex('#fff', contrastColor.hex);
     const blackHexContrast = wcagContrast.hex('#000', contrastColor.hex);
@@ -18,7 +18,16 @@ const ContrastSuggestions = ({contrastColor, setPickerColor, toggleShowColorPick
 
     return (
         <div>
-            <div style={{backgroundColor:hex, color:textHexColor, padding:'5px 10px', fontSize:'12px'}}> <h2>Contrast: {hex}</h2></div>
+            <div 
+                style={
+                    {backgroundColor:hex, 
+                    color:textHexColor, 
+                    padding:'5px 10px', 
+                    fontSize:'12px'}
+                }
+            > 
+                <h2>Contrast: {hex}</h2>
+            </div>
             <div className="contrast-grid">
                 {suggestions && suggestions.length > 0 && (
                 suggestions.map((color,idx) => (
