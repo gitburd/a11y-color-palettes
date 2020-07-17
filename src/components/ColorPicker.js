@@ -1,19 +1,20 @@
-import React, {useState} from 'react'
-import { SketchPicker, ChromePicker} from 'react-color'
+import React, {useState} from 'react';
+import {SketchPicker} from 'react-color';
 
-const ColorPicker = ({setPickerColor, pickerColor}) => {
-  const [background, setBackground] = useState(pickerColor)
-  const  handleChangeComplete = (color) => {
+const ColorPicker = ({pickerColor}) => {
+  const [background, setBackground] = useState(pickerColor);
+  const handleChangeComplete = (color) => {
     setBackground(color.hex);
   };
 
-      return (
-        <SketchPicker
-          color={ background }
-          onChange={ handleChangeComplete }
-        />
-      );
+    return (
+      <SketchPicker
+        color={ background }
+        onChange={ handleChangeComplete }
+        disableAlpha={true}
+      />
+    );
     
 }
 
-export default ColorPicker
+export default ColorPicker;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 var wcagContrast = require("wcag-contrast")
 
 const ContrastChecker = ({backgroundColor, textColor}) => {
@@ -15,28 +15,28 @@ const ContrastChecker = ({backgroundColor, textColor}) => {
 
         return (
             <div className='example-text'>
-                <div style={{borderBottom:'1px solid #181416'}}>
-                    <div style={{padding:'10px 20px', borderBottom:'1px solid #181416'}}>
-                        <h1 style={{paddingBottom:'5px', margin:'0'}}>Contrast Checker</h1>
+                <div style={{borderBottom: '1px solid #181416'}}>
+                    <div style={{padding: '10px 20px', borderBottom: '1px solid #181416'}}>
+                        <h1 style={{paddingBottom: '5px', margin: '0'}}>Contrast Checker</h1>
                         <span className='checker-emoji'>Background Color: {backgroundColor} </span> 
                         <span className='checker-emoji'>Text Color: {textColor} </span>
                         <span className='checker-emoji'>Contrast {res} </span>
                     </div>
-                    <div style={{padding:'2px 20px' }}>
+                    <div style={{padding: '2px 20px'}}>
                         <span>AA Standards : </span>
                         <span className='checker-emoji'>{headerContrastAA} Large & Bold Text </span> 
                         <span className='checker-emoji'> {smallContrastAA} Small Text </span>
                     </div>
-                    <div style={{padding:'2px 20px', }}>
+                    <div style={{padding: '2px 20px'}}>
                         <span>AAA Standards : </span>
                         <span className='checker-emoji'>{headerContrastAAA} Large & Bold Text </span> 
                         <span className='checker-emoji'> {smallContrastAAA} Small Text </span>
                     </div>
                 </div>
-                <div style={{backgroundColor:backgroundColor, color:textColor, minHeight:'40vh', margin:'0', padding:'15px'}}>
+                <div style={{backgroundColor: backgroundColor, color: textColor, minHeight: '40vh', margin: '0', padding: '15px'}}>
                     <h1> The quick brown fox jumps over the lazy dog</h1>
-                    <p styel={{fontSize:'18px'}}><b>The quick brown fox jumps over the lazy dog</b></p>
-                    <p styel={{fontSize:'14px'}}>The quick brown fox jumps over the lazy dog</p>
+                    <p styel={{fontSize: '18px'}}><b>The quick brown fox jumps over the lazy dog</b></p>
+                    <p styel={{fontSize: '14px'}}>The quick brown fox jumps over the lazy dog</p>
                 </div>
             <div>
                    
