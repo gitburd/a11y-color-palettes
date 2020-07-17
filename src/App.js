@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
 import ContrastChecker from './components/ContrastChecker'
 import ContrastSuggestions from './components/ContrastSuggestions'
 import ColorPickerDisplay from './components/ColorPickerDisplay'
 import Palette from './components/Palette'
+import StoredPalettes from './helpers/StoredPalettes'
+import SavedPalettes from './components/SavedPalettes'
 import { SketchPicker, ChromePicker} from 'react-color'
+import Navbar from './components/Navbar'
 
 class App extends Component {
   state = {
@@ -18,8 +22,6 @@ class App extends Component {
     pickerColor:{hex:'#fff'},
     newColor: {
       hex:'#ffffff',
-      rgb:{a:1,b:255,g:255,r:255},
-      hsl: {a:1, h:0, l:1, s:0}
     },
     showColorPicker:true,
     palette:[
@@ -33,7 +35,8 @@ class App extends Component {
         rgb:{a:1,b:0,g:0,r:0},
         hsl: {a:1, h:0, l:0, s:0}
       }
-    ]
+    ],
+    palettes:StoredPalettes
   }
 
   componentDidMount(){
@@ -82,7 +85,9 @@ class App extends Component {
   }
 
   setPickerColor = (hex) => {
-    this.setState({pickerColor:hex, showColorPicker:true},this.handleColorPickerChange(hex))
+    let newColor = {hex:hex}
+    console.log('new color', newColor)
+    this.setState({pickerColor:hex, newColor})
   }
 
   handleColorPickerChange = (color) => {
@@ -103,112 +108,56 @@ class App extends Component {
   render() {
     const {backgroundColor, textColor} = this.state
     return (
-      <div style={{padding:'1rem'}}>
-        <div className='app-grid'>
-          <div style={{border:'3px solid'}}>
-            <Palette 
-              palette = {this.state.palette}
-              setContrastColor = {this.setContrastColor}
-              setPickerColor = {this.setPickerColor} 
-              deleteColor = {this.removeFromPalette}
-            />
-            {/* <Color 
-              color={{
-                hex:'#eed9b5',
-                rgb:{a:1,b:181,g:217,r:238},
-                hsl: {a:1, h:38, l:82, s:63}
-              }} 
-              setBackgroundColor={this.setBackgroundColor} 
-              setTextColor={this.setTextColor}
-              setContrastColor={this.setContrastColor}
-              setPickerColor={this.setPickerColor} 
-            />
-            <Color 
-              color={{
-                hex:'#8BE4B8',
-                rgb:{a:1,b:228,g:184,r:139},
-                hsl: {a:1, h:150, l:72, s:62}
-              }} 
-              setBackgroundColor={this.setBackgroundColor} 
-              setTextColor={this.setTextColor}
-              setContrastColor={this.setContrastColor}
-              setPickerColor={this.setPickerColor} 
-            />
-            <Color 
-              color={{
-                hex:'#5A5089',
-                rgb:{a:1,b:137,g:80,r:90},
-                hsl: {a:1, h:251, l:43, s:26}
-              }} 
-              setBackgroundColor={this.setBackgroundColor} 
-              setTextColor={this.setTextColor}
-              setContrastColor={this.setContrastColor}
-              setPickerColor={this.setPickerColor} 
-            />
-            <Color 
-              color={{
-                hex:'#3a2a0d',
-              rgb:{a:1,b:13,g:42,r:58},
-              hsl: {a:1, h:39, l:14, s:63}
-              }} 
-              setBackgroundColor={this.setBackgroundColor} 
-              setTextColor={this.setTextColor}
-              setContrastColor={this.setContrastColor}
-              setPickerColor={this.setPickerColor} 
-            />
-            <Color 
-              color={{
-                hex:'#000',
-              rgb:{a:1,b:0,g:0,r:0},
-              hsl: {a:1, h:0, l:0, s:0}
-              }} 
-              setBackgroundColor={this.setBackgroundColor} 
-              setTextColor={this.setTextColor}
-              setContrastColor={this.setContrastColor}
-              setPickerColor={this.setPickerColor} 
-            />
-            <Color 
-              color={{
-              hex:'#fff',
-              rgb:{a:1,b:255,g:255,r:255},
-              hsl: {a:1, h:0, l:100, s:100}
-              }} 
-              setBackgroundColor={this.setBackgroundColor} 
-              setTextColor={this.setTextColor}
-              setContrastColor={this.setContrastColor}
-              setPickerColor={this.setPickerColor} 
-            /> */}
-
-            <ContrastSuggestions  
-              contrastColor={this.state.contrastColor} 
-              setPickerColor={this.setPickerColor} 
-              toggleShowColorPicker={this.toggleShowColorPicker}
-            />
-          </div>
-          <div>
-            {/* {this.state.showColorPicker &&  */}
-                <ColorPickerDisplay 
-                  color={this.state.pickerColor}
-                  setBackgroundColor={this.setBackgroundColor} 
-                  setTextColor={this.setTextColor}
-                  toggleShowColorPicker={this.toggleShowColorPicker}
-                  addToPalette={this.addToPalette}
-                  newColor={this.state.newColor}
-                />
-              <div style={{backgroundColor:this.state.pickerColor}}>
-                <ChromePicker
-                  color={ this.state.pickerColor}
-                  onChangeComplete={ this.handleColorPickerChange }
-                />
- 
+      <div >
+        <Navbar/>
+        <Router>
+          <Switch>
+            <Route exact path='/' render={props =>
+              <div>
+                <div className='app-grid' style={{padding:'1rem'}}>
+                  <div style={{border:'3px solid #181416'}}>
+                    <Palette 
+                      palette = {this.state.palette}
+                      setContrastColor = {this.setContrastColor}
+                      setPickerColor = {this.setPickerColor} 
+                      deleteColor = {this.removeFromPalette}
+                    />
+                  
+                    <ContrastSuggestions  
+                      contrastColor={this.state.contrastColor} 
+                      setPickerColor={this.setPickerColor} 
+                      toggleShowColorPicker={this.toggleShowColorPicker}
+                      palette={this.state.palette}
+                    />
+                  </div>
+                  <div style={{border:'3px solid #181416'}}>
+                    <ColorPickerDisplay 
+                      color={this.state.pickerColor}
+                      setBackgroundColor={this.setBackgroundColor} 
+                      setTextColor={this.setTextColor}
+                      toggleShowColorPicker={this.toggleShowColorPicker}
+                      addToPalette={this.addToPalette}
+                      newColor={this.state.newColor}
+                    />
+                    <div style={{backgroundColor:this.state.pickerColor}}>
+                      <ChromePicker
+                        color={ this.state.pickerColor}
+                        onChangeComplete={ this.handleColorPickerChange }
+                      />
+                    </div> 
+                    <ContrastChecker 
+                      backgroundColor={backgroundColor} 
+                      textColor={textColor}
+                    />
+                  </div>
+                </div>
               </div>
-            {/* } */}
-            <ContrastChecker 
-              backgroundColor={backgroundColor} 
-              textColor={textColor}
-            />
-          </div>
-        </div>
+            } />
+            <Route path='/examples'>
+              <SavedPalettes palettes={this.state.palettes}/>
+            </Route>
+          </Switch>
+        </Router>
       </div>
     )
   }

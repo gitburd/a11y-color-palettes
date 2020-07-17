@@ -1,5 +1,8 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 .example-text{
-    border: 3px solid;
+    /* border: 3px solid; */
     clear:both; 
     /* width:70%;
     margin:20px auto;
@@ -31,7 +34,14 @@
     clear:both;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: .8rem;
+    grid-gap: 2rem;
+    margin:auto;
+}
+.saved-palette-grid{
+    clear:both;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
     margin:auto;
 }
 
@@ -41,38 +51,83 @@
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 0;
     margin:auto;
+    margin: 0 -1px;
 }
 
 .display-btn{
-    padding:2px;
+    padding:4px;
+    text-align: center;
     font-size: 16px;
     color: #3A0D34;
     background-color:#fff;
     font-weight: bold;
+    border: .75px solid #181416;
+    margin:0;
 }
 
 .display-btn:hover{
     cursor: pointer;
     background-color: #3A0D34;
     color:#fff;
+    border: .75px solid #181416;
 }
 
-.color-btn-grid{
+/* .color-btn-grid{
     clear:both;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 0;
-    margin:auto;
-}
+    margin: 0 -2px;
+} */
 
-.color-btn{
+/* .color-btn{
+    padding:4px;
+    text-align: center;
     font-size: 16px;
     color: #3A0D34;
     background-color:#fff;
+    font-weight: bold;
+    border: .75px solid #181416;
+    margin:0;
 }
 
 .color-btn:hover{
     cursor: pointer;
     background-color: #3A0D34;
-    color:#fff;
+    color:#fff; */
+/* } */
+
+h1{
+    font-size: 24px;
 }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  li {
+    float: left;
+    font-size: 18px;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover:not(.active) {
+    background-color: #111;
+  }
+
+  .icon:hover{
+      cursor: pointer;
+  }
+
+ 

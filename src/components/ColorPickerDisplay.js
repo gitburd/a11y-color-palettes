@@ -6,13 +6,16 @@ const ColorPickerDisplay = ({color, setBackgroundColor, setTextColor, addToPalet
         console.log('copied')
     } 
     return (
-        <div className='btn-grid'>
-            <button className='display-btn' onClick={() => setBackgroundColor(color)}>Backgorund</button>
-            <button className='display-btn' onClick={() => setTextColor(color)}>Text Color</button>
-            <button className='display-btn' onClick={() => addToPalette(newColor)}>Add to Palette</button>
-            <CopyToClipboard text={color} onCopy={onCopy}>
-                <button className='display-btn' onClick={()=> console.log('copy')}>Copy</button>
-            </CopyToClipboard>
+        <div>
+            <h1 style={{padding:'5px 20px', margin:'0'}}>Tools</h1>
+            <div className='btn-grid'>
+                <p className='display-btn' onClick={() => setBackgroundColor(color)}>Backgorund</p>
+                <p className='display-btn' onClick={() => setTextColor(color)}>Text Color</p>
+                <p className='display-btn' onClick={() => addToPalette(newColor)}>Add to Palette</p>
+                <CopyToClipboard text={color} onCopy={onCopy}>
+                    <p className='display-btn' onClick={()=> console.log('copy')}>Copy</p>
+                </CopyToClipboard>
+            </div>
         </div>
     )
 }

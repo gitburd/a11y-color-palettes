@@ -25,7 +25,7 @@ export const getColorSuggetions = (color) => {
 
     let L1
     let L2
-    if(L >= 30 && L < 50){
+    if(L >= 30 && L < 70){
         const Ls = findMidRangeComplements(hex)
         L1 = Ls[0]
         L2 = Ls[1]

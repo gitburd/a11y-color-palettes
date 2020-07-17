@@ -1,9 +1,8 @@
-// edit was in color 
-// set as background 
-// set as text color and pass back to app
-import React, {useState} from 'react'
+import React from 'react'
 import {getRGB, getLuminacity, getHSL} from '../helpers/ColorConversions'
 import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 var wcagContrast = require("wcag-contrast")
 
@@ -18,57 +17,27 @@ const Color = ({color, setBackgroundColor, setTextColor, deleteColor, setContras
     const blackHexContrast = wcagContrast.hex('#000', hex);
     const textHexColor = whiteHexContrast > blackHexContrast ? '#fff' : '#000'
 
-    const onCopy = () =>{
-        console.log('copied')
+    const onCopy = (hex) =>{
+        toast.dark(`Copied ${hex}`)
     } 
 
     return (
-        <div>
-            <div 
-                style={{backgroundColor:hex, color:textHexColor, padding:'.1px 6px'}}
-            >   
-            <p style={{padding:'0 15px'}}>{hex}</p>
-            <div className="btn-grid">
-                <button
-                    onClick={()=>setPickerColor(hex)}
-                    className='color-btn'    
-                >
-                   Pick
-                </button>
-                <button
-                    onClick={()=>getComplements(color)}
-                    className='color-btn'
-                >
-                   Contrast
-                </button>
-                {/* <button
-                    onClick={()=>setBackgroundColor(hex)}
-                >
-                    Background
-                </button>
-                <button
-                    onClick={()=>setTextColor(hex)}
-                >
-                    Text Color
-                </button> */}
-                  <CopyToClipboard text={hex} onCopy={onCopy}>
-                    <button
-                        className='color-btn'
-                    >
-                    Copy
-                    </button>
-                  </CopyToClipboard>
-                
-                <button
-                    onClick={()=>deleteColor(hex)}
-                    className='color-btn'
-                >
-                   Delete
-                </button>    
-            </div>    
-            </div>
+        <div 
+            style={{backgroundColor:hex, color:textHexColor, padding:'.02px', borderBottom:'1px solid black'}}
+        >
+            <span style={{float:'right', display:'block', fontSize:'large', margin:'12px'}}>
+                <i style={{padding:'0 7px'}} onClick={()=>setPickerColor(hex)} className="fa fa-eyedropper icon" aria-hidden="true"></i>
+                <i style={{padding:'0 7px'}} onClick={()=>getComplements(color)} className="fa fa-adjust icon" aria-hidden="true"></i>
+                <i style={{padding:'0 7px'}} onClick={()=>deleteColor(hex)} className="fa fa-times icon" aria-hidden="true"></i>
+            </span>
+            <CopyToClipboard text={hex} onCopy={()=>onCopy(hex)}>
+                <p className='icon' style={{padding:'0 15px'}}>{hex} <i className="fas fa-clone"></i></p>
+            </CopyToClipboard>   
+            <ToastContainer
+                autoClose={3000} 
+                position="top-center"
+            />
         </div>
-       
     )
 }
 export default Color
