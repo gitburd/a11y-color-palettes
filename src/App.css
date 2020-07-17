@@ -102,4 +102,8 @@ ul {
       cursor: pointer;
   }
 
- 
+ .link{
+    text-decoration: none;
+    font-weight: bold;
+    color: #9506a0;
+ }

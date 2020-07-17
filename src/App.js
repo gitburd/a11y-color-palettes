@@ -9,6 +9,7 @@ import StoredPalettes from './helpers/StoredPalettes'
 import SavedPalettes from './components/SavedPalettes'
 import { ChromePicker} from 'react-color'
 import Navbar from './components/Navbar'
+import About from './components/About'
 
 class App extends Component {
   constructor(props) {
@@ -173,6 +174,9 @@ class App extends Component {
             } />
             <Route path='/examples'>
               <SavedPalettes palettes={this.state.palettes}/>
+            </Route>
+            <Route path='/about'>
+              <About/>
             </Route>
           </Switch>
         </Router>
