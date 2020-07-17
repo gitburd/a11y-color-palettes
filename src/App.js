@@ -127,8 +127,8 @@ class App extends Component {
     const {backgroundColor, textColor} = this.state
     return (
       <div >
-        <Navbar/>
         <Router>
+          <Navbar/>
           <Switch>
             <Route exact path='/' render={props =>
               <div>

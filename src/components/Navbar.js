@@ -1,12 +1,13 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const Navbar = () => {
     return (
         <ul>
-            <li><a href="/" style={{fontSize: '24px'}}>A11y Palette Picker</a></li>
-            <li style={{float: "right"}}><a  href="/about">About</a></li>
-            <li style={{float: "right"}}><a  href="/examples">Examples</a></li>
-            <li style={{float: "right"}}><a  href="/">Home</a></li>
+            <li><Link to='/' style={{fontSize: '24px'}}>A11y Palette Picker</Link></li>
+            <li style={{float: "right"}}><Link to='about'>About</Link></li>
+            <li style={{float: "right"}}><Link to="/examples">Examples</Link></li>
+            <li style={{float: "right"}}><Link to="/">Home</Link></li>
         </ul>
     )
 }
