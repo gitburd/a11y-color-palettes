@@ -56,12 +56,14 @@ class App extends Component {
     let pickerColor = JSON.parse(localStorage.getItem('pickerColor')) || {hex:'#fff'}
     let backgroundColor = JSON.parse(localStorage.getItem('backgroundColor')) || '#FFF'
     let textColor = JSON.parse(localStorage.getItem('textColor')) || '#000'
+    let palettes = JSON.parse(localStorage.getItem('palettes')) || StoredPalettes
 
     this.setState({
       palette, 
       pickerColor, 
       backgroundColor, 
-      textColor
+      textColor,
+      palettes
     })
   }
 
@@ -70,6 +72,7 @@ class App extends Component {
     localStorage.setItem('pickerColor', JSON.stringify(this.state.pickerColor))
     localStorage.setItem('backgroundColor', JSON.stringify(this.state.backgroundColor))
     localStorage.setItem('textColor', JSON.stringify(this.state.textColor))
+    localStorage.setItem('palettes', JSON.stringify(this.state.palettes))
   }
 
   setBackgroundColor = (backgroundColor) => {
@@ -104,6 +107,12 @@ class App extends Component {
     this.setState({ palette })
   }
 
+  savePalette = (palette) => {
+    console.log(palette)
+    const newPalettes = [palette, ...this.state.palettes]
+    this.setState({palettes:newPalettes})
+  }
+
 
   render() {
     const {backgroundColor, textColor} = this.state
@@ -117,6 +126,7 @@ class App extends Component {
                 <div className='app-grid' style={{padding:'1rem'}}>
                   <div style={{border:'3px solid #181416'}}>
                     <Palette 
+                      savePalette = {this.savePalette}
                       palette = {this.state.palette}
                       setContrastColor = {this.setContrastColor}
                       setPickerColor = {this.setPickerColor} 

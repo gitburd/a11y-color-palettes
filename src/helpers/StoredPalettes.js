@@ -96,9 +96,61 @@ const StoredPalettes = [
             rgb:{a:1,b:85,g:28,r:83},
             hsl: {a:1, h:38, l:0.47, s:0.82}
         }
+    ],
+    [
+        {hex: "#ccf0c3"},
+        {hex: "#bca3ca"},
+        {hex: "#7c4789"},
+        {hex: "#4a0e5c"}
+    ],
+    [
+        {hex: "#42cfc4"},
+        {hex: "#0F2C16"},
+        {hex: "#5a5a0b"},
+        {hex: "#eaeab8"},
+        {hex: "#552F1C"}
+    ],
+    [
+        {hex: "#e2d810"},
+        {hex: "#12a4d9"},
+        {hex: "#fd5ebc"},
+        {hex: "#322e2f"}
+    ],
+    [
+        {hex: "#be1558"},
+        {hex: "#fd5ebc"},
+        {hex: "#e75874"},
+        {hex: "#fbcbc9"},
+        {hex: "#322514"}
+    ],
+    [
+        {hex: "#1c5c5e"},
+        {hex: "#fbf57a"}
+    ],
+    [
+        {hex: "#efc710"},
+        {hex: "#84a4c5"},
+        {hex: "#083667"},
+        {hex: "#142b41"}
+    ],
+    [
+        {hex: "#1e3d59"},
+        {hex: "#f5f0e1"},
+        {hex: "#ffc13b"},
+        {hex: "#ff7e52"}
+    ],
+    [
+        {hex: "#ddc3a5"},
+        {hex: "#e0a96d"},
+        {hex: "#561039"},
+        {hex: "#551c1e"},
+        {hex: "#201e20"}
+    ],
+    [
+        {hex: "#83191b"},
+        {hex: "#e7e8d1"},
+        {hex: "#a7beae"}
     ]
-
-    
 ]
 
 export default StoredPalettes

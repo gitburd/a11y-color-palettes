@@ -39,8 +39,8 @@ export const getColorSuggetions = (color) => {
         L1 = L + 58;
         L2 = L + 66;
     }else if (L < 60){
-        L1 = L - 42;
-        L2 = L - 52;
+        L1 = L - 33;
+        L2 = L - 42;
     } else if (L < 70){
         L1 = L - 40;
         L2 = L - 50;
