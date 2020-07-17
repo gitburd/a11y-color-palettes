@@ -18,9 +18,9 @@ const ContrastChecker = ({backgroundColor, textColor}) => {
                 <div style={{borderBottom: '1px solid #181416'}}>
                     <div style={{padding: '10px 20px', borderBottom: '1px solid #181416'}}>
                         <h1 style={{paddingBottom: '5px', margin: '0'}}>Contrast Checker</h1>
-                        <span className='checker-emoji'>Background Color: {backgroundColor} </span> 
-                        <span className='checker-emoji'>Text Color: {textColor} </span>
-                        <span className='checker-emoji'>Contrast {res} </span>
+                        <span className='checker-emoji'>Background: {backgroundColor} </span>
+                        <span className='checker-emoji'>Text: {textColor} </span>
+                        <span className='checker-emoji'>Contrast: {res} </span>
                     </div>
                     <div style={{padding: '2px 20px'}}>
                         <span>AA Standards : </span>
@@ -34,8 +34,8 @@ const ContrastChecker = ({backgroundColor, textColor}) => {
                     </div>
                 </div>
                 <div style={{backgroundColor: backgroundColor, color: textColor, minHeight: '40vh', margin: '0', padding: '15px'}}>
-                    <h1> The quick brown fox jumps over the lazy dog</h1>
-                    <p styel={{fontSize: '18px'}}><b>The quick brown fox jumps over the lazy dog</b></p>
+                    <h1 style={{marginTop: '0'}}> The quick brown fox jumps over the lazy dog</h1>
+                    <p styel={{fontSize: '16px'}}><b>The quick brown fox jumps over the lazy dog</b></p>
                     <p styel={{fontSize: '14px'}}>The quick brown fox jumps over the lazy dog</p>
                 </div>
             <div>
