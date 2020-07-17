@@ -1,5 +1,6 @@
 body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #fdf7ed;
 }
 .example-text{
     /* border: 3px solid; */
@@ -55,11 +56,11 @@ body{
 }
 
 .display-btn{
-    padding:4px;
+    padding:10px 4px;
     text-align: center;
     font-size: 16px;
-    color: #3A0D34;
-    background-color:#fff;
+    background-color: #3A0D34;
+    color:#fdf7ed;
     font-weight: bold;
     border: .75px solid #181416;
     margin:0;
@@ -67,35 +68,10 @@ body{
 
 .display-btn:hover{
     cursor: pointer;
-    background-color: #3A0D34;
-    color:#fff;
-    border: .75px solid #181416;
-}
-
-/* .color-btn-grid{
-    clear:both;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 0;
-    margin: 0 -2px;
-} */
-
-/* .color-btn{
-    padding:4px;
-    text-align: center;
-    font-size: 16px;
     color: #3A0D34;
-    background-color:#fff;
-    font-weight: bold;
+    background-color:#fdf7ed;
     border: .75px solid #181416;
-    margin:0;
 }
-
-.color-btn:hover{
-    cursor: pointer;
-    background-color: #3A0D34;
-    color:#fff; */
-/* } */
 
 h1{
     font-size: 24px;
@@ -106,7 +82,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #3A0D34;
   }
   
   li {
@@ -116,7 +92,7 @@ ul {
   
   li a {
     display: block;
-    color: white;
+    color: #fdf7ed;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;

@@ -1,7 +1,6 @@
 var convert = require('color-convert');
 var wcagContrast = require("wcag-contrast")
 
-
 export const getColorSuggetions = (color) => {
     const H = color.hsl.h;
     let S = color.hsl.s;
@@ -25,7 +24,7 @@ export const getColorSuggetions = (color) => {
 
     let L1
     let L2
-    if(L >= 30 && L < 70){
+    if(L >= 30 && L < 50){
         const Ls = findMidRangeComplements(hex)
         L1 = Ls[0]
         L2 = Ls[1]
@@ -39,15 +38,21 @@ export const getColorSuggetions = (color) => {
     } else if (L < 30 ){
         L1 = L + 58;
         L2 = L + 66;
+    }else if (L < 60){
+        L1 = L - 42;
+        L2 = L - 52;
+    } else if (L < 70){
+        L1 = L - 40;
+        L2 = L - 50;
     } else if (L < 80){
-        L1 = L - 50;
-        L2 = L - 58;
+        L1 = L - 45;
+        L2 = L - 60;
     } else if (L < 90){
         L1 = L - 60;
-        L2 = L - 68;
+        L2 = L - 75;
     } else {
-        L1 = L - 72;
-        L2 = L - 83;
+        L1 = L - 65;
+        L2 = L - 80;
     }
 
     if(S < 15){S += 50}
