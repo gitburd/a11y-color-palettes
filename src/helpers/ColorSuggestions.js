@@ -20,22 +20,22 @@ export const getColorSuggetions = (color) => {
         
     const complements = [];
 
-    let H1 = H + 120;
+    let H1 = H + 40;
     if(H1 > 360) { H1 -= 360}
     
-    let H2 = H + 260;
+    let H2 = H + 180;
     if(H2 < 0) { H2 += 360}
     
-    let H3 = H + 320;
+    let H3 = H + 280;
     if(H3 < 0) { H3 += 360}
 
-    let H4 = H + 90;
+    let H4 = H + 210;
     if(H4 > 360) { H4 -= 360}
 
     let L1;
     let L2;
 
-    if(L >= 30 && L < 50) {
+    if(L >= 30 && L < 52) {
         const Ls = findMidRangeComplements(hex);
         L1 = Ls[0];
         L2 = Ls[1];
@@ -59,8 +59,8 @@ export const getColorSuggetions = (color) => {
         L1 = L - 45;
         L2 = L - 60;
     } else if (L < 90) {
-        L1 = L - 60;
-        L2 = L - 75;
+        L1 = L - 53;
+        L2 = L - 65;
     } else {
         L1 = L - 65;
         L2 = L - 80;
