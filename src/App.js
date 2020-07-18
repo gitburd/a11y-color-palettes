@@ -27,41 +27,18 @@ class App extends Component {
         hex: '#ffffff',
       },
       showColorPicker: true,
-      palette: [
-        {
-          hex: '#ffffff',
-          rgb:{a:1,b:255,g:255,r:255},
-          hsl: {a:1, h:0, l:1, s:0}
-        },
-        {
-          hex: '#000',
-          rgb:{a:1,b:0,g:0,r:0},
-          hsl: {a:1, h:0, l:0, s:0}
-        }
-      ],
+      palette: [],
       palettes:StoredPalettes
     }
   }
 
   componentDidMount(){
-    let palette = JSON.parse(localStorage.getItem('palette')) ||  
-    [
-      {
-        hex: '#ffffff',
-        rgb: {a: 1,b: 255,g: 255,r: 255},
-        hsl:  {a: 1, h: 0, l: 1, s: 0}
-      },
-      {
-        hex: '#000',
-        rgb: {a: 1,b: 0,g: 0,r: 0},
-        hsl: {a: 1, h: 0, l: 0, s: 0}
-      }
-    ]
+    let palette = JSON.parse(localStorage.getItem('palette')) || []
     let pickerColor = JSON.parse(localStorage.getItem('pickerColor')) || {hex: '#fff'}
     let backgroundColor = JSON.parse(localStorage.getItem('backgroundColor')) || '#FFF'
     let textColor = JSON.parse(localStorage.getItem('textColor')) || '#000'
     let palettes = JSON.parse(localStorage.getItem('palettes')) || StoredPalettes
-
+    
     this.setState({
       palette, 
       pickerColor, 
@@ -80,7 +57,7 @@ class App extends Component {
     localStorage.setItem('textColor', JSON.stringify(this.state.textColor))
     localStorage.setItem('palettes', JSON.stringify(this.state.palettes))
   }
-
+  
   setBackgroundColor = (backgroundColor) => {
     this.setState({backgroundColor})
   }

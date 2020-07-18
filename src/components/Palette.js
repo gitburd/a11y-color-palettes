@@ -9,18 +9,18 @@ const Palette = ({
   setContrastColor,
   setPickerColor,
   deleteColor}) => {
-    
-  if(!palette || palette.length === 0){
-    return(
-      <div style={{padding: '0 20px'}}>
-        <h1 style={{padding: '5px 0', margin: '0'}}>Palette</h1>
+
+  if(!palette || palette.length === 0) {
+    return (
+      <div style={{padding: '20px', boxShadow: '5px 5px 5px 5px #aaaaaa', margin: '40px auto', width: '85%'}}>
         <div style={{textAlign: 'center', fontWeight: 'bold'}}>
-          <p>Your Palette is empty.</p>
-          <p> Use the color picker to add colors.</p>
+          <h2>Your Palette is empty.</h2>
+          <h2> Use the color picker get started.</h2>
+          <i style={{animation: 'slide1 1s ease-in-out infinite', fontSize: '60px'}} className="fa fa-long-arrow-right arrow1" aria-hidden="true"></i>
         </div>
       </div>
-    )
-  }  
+    );
+  }
   const onSave = (palette) =>{
     savePalette(palette);
     toast.dark(`Palette Saved`);
