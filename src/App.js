@@ -134,6 +134,7 @@ class App extends Component {
                       toggleShowColorPicker={this.toggleShowColorPicker}
                       addToPalette={this.addToPalette}
                       newColor={this.state.newColor}
+                      palette={this.state.palette}
                     />
                     <div style={{backgroundColor:this.state.pickerColor}}>
                       <ChromePicker

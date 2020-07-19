@@ -10,10 +10,16 @@ const Palette = ({
   setPickerColor,
   deleteColor}) => {
 
-  if(!palette || palette.length === 0) {
+  if (!palette || palette.length === 0) {
     return (
-      <div style={{padding: '20px', boxShadow: '5px 5px 5px 5px #aaaaaa', margin: '40px auto', width: '85%'}}>
-        <div style={{textAlign: 'center', fontWeight: 'bold'}}>
+      <div 
+      style={{
+        padding: '20px',
+        boxShadow: '5px 5px 5px 5px #aaaaaa',
+        margin: '40px auto',
+        width: '85%'}}
+      >
+        <div style={{textAlign: 'center', fontWeight: 'bold', color: '#3A0D34'}}>
           <h2>Your Palette is empty.</h2>
           <h2> Use the color picker get started.</h2>
           <i style={{animation: 'slide1 1s ease-in-out infinite', fontSize: '60px'}} className="fa fa-long-arrow-right arrow1" aria-hidden="true"></i>
