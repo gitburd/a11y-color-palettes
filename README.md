@@ -8,6 +8,9 @@
 
 * Save your palettes
 
+* Deployed on [Netlify](https://a11y-palette.netlify.app/)
+
+
 
 ![image](https://github.com/gitburd/a11y-color-palettes/blob/master/public/images/screenShot1.png)
 ![image](https://github.com/gitburd/a11y-color-palettes/blob/master/public/images/screenShot2.png)
