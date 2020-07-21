@@ -5,11 +5,12 @@ import ContrastChecker from './components/ContrastChecker'
 import ContrastSuggestions from './components/ContrastSuggestions'
 import ColorPickerDisplay from './components/ColorPickerDisplay'
 import Palette from './components/Palette'
-import StoredPalettes from './helpers/StoredPalettes'
+// import StoredPalettes from './helpers/StoredPalettes'
 import SavedPalettes from './components/SavedPalettes'
 import { ChromePicker} from 'react-color'
 import Navbar from './components/Navbar'
 import About from './components/About'
+import {db} from './FirebaseDB'
 
 class App extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class App extends Component {
       },
       showColorPicker: true,
       palette: [],
-      palettes:StoredPalettes
+      palettes:[]
     }
   }
 
@@ -37,14 +38,12 @@ class App extends Component {
     let pickerColor = JSON.parse(localStorage.getItem('pickerColor')) || {hex: '#fff'}
     let backgroundColor = JSON.parse(localStorage.getItem('backgroundColor')) || '#FFF'
     let textColor = JSON.parse(localStorage.getItem('textColor')) || '#000'
-    let palettes = JSON.parse(localStorage.getItem('palettes')) || StoredPalettes
     
     this.setState({
       palette, 
       pickerColor, 
       backgroundColor, 
-      textColor,
-      palettes
+      textColor
     })
   }
 
@@ -96,8 +95,21 @@ class App extends Component {
   }
 
   savePalette = (palette) => {
-    const newPalettes = [palette, ...this.state.palettes]
-    this.setState({palettes:newPalettes})
+    // const newPalettes = [palette, ...this.state.palettes]
+    // this.setState({palettes:newPalettes})
+    // const newPalette = [];
+    // palette.forEach((color => {
+    //   newPalette.push(`{hex:${color}}`)
+    // }))
+    db.collection("palettes").add({
+      colors: palette
+  })
+  .then(function(docRef) {
+      console.log("Document written with ID: ", docRef.id);
+  })
+  .catch(function(error) {
+      console.error("Error adding document: ", error);
+  });
   }
 
 
@@ -151,7 +163,7 @@ class App extends Component {
               </div>
             } />
             <Route path='/examples'>
-              <SavedPalettes palettes={this.state.palettes}/>
+              <SavedPalettes />
             </Route>
             <Route path='/about'>
               <About/>

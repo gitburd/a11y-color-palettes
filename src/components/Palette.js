@@ -29,7 +29,7 @@ const Palette = ({
   }
   const onSave = (palette) =>{
     savePalette(palette);
-    toast.dark(`Palette Saved`);
+    toast.dark(`Saved to Examples`);
   }   
   return (
     <div>
