@@ -8,11 +8,10 @@ const wcagContrast = require("wcag-contrast");
 
 const Color = ({
     color,
-    setBackgroundColor,
-    setTextColor,
     deleteColor, 
     setContrastColor,
-    setPickerColor
+    setPickerColor,
+    idx
     }) => { 
     const {hex} = color;
 
@@ -54,7 +53,7 @@ const Color = ({
                     className="fa fa-adjust icon" aria-hidden="true"
                 ></i>
                 <i style={{padding: '0 7px'}}
-                    onClick={()=>deleteColor(hex)}
+                    onClick={()=>deleteColor(idx)}
                     className="fa fa-times icon"
                     aria-hidden="true"
                 ></i>

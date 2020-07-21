@@ -45,6 +45,7 @@ const Palette = ({
       (
         palette.map((color, idx) => (
           <Color 
+            idx={idx}
             key={idx}
             color={color}
             setContrastColor = {setContrastColor}

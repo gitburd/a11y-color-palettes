@@ -88,19 +88,16 @@ class App extends Component {
     let palette = [...this.state.palette,color]
     this.setState({palette})
   }
-  removeFromPalette = (color) => {
+  removeFromPalette = (index) => {
     let palette = [...this.state.palette]
-    palette = palette.filter(element => {return element.hex !== color} ) 
-    this.setState({ palette })
+    console.log('?',index)
+    if (palette.length > 0 ){
+      palette = palette.filter((element, idx) => {return idx !== index} ) 
+      this.setState({ palette })
+    }
   }
 
   savePalette = (palette) => {
-    // const newPalettes = [palette, ...this.state.palettes]
-    // this.setState({palettes:newPalettes})
-    // const newPalette = [];
-    // palette.forEach((color => {
-    //   newPalette.push(`{hex:${color}}`)
-    // }))
     db.collection("palettes").add({
       colors: palette
   })
