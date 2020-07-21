@@ -3,7 +3,7 @@ import {getColorSuggetions} from '../helpers/ColorSuggestions'
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import ReactTooltip from 'react-tooltip';
 
 const ContrastSuggestions = ({contrastColor, setPickerColor, palette}) => {
     var wcagContrast = require("wcag-contrast")
@@ -60,12 +60,13 @@ const ContrastSuggestions = ({contrastColor, setPickerColor, palette}) => {
                             <i
                             style={{padding: '0 7px'}}
                             onClick={()=>onClick(c)}
-                            className="fa fa-eyedropper icon" aria-hidden="true"
+                            className="fa fa-eyedropper icon" data-tip="pick" aria-hidden="true"
                             >    
                             </i>
                             </span>
                             <CopyToClipboard text={c} onCopy={()=>onCopy(c)}>
-                                <p style={{padding: '0 15px'}}>{c} <i className="fas fa-clone icon"></i></p>
+                                <p style={{padding: '0 15px'}}>{c}{' '} 
+                                <i className="fas fa-clone icon" data-tip="copy"></i></p>
                             </CopyToClipboard>
                          </div>
                         )))}
@@ -74,6 +75,7 @@ const ContrastSuggestions = ({contrastColor, setPickerColor, palette}) => {
                         autoClose={3000}
                         position="top-center"
                     />
+                    <ReactTooltip place='top' effect='solid'/>
             </div>
             }
         </div>

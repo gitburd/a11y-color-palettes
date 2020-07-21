@@ -2,6 +2,7 @@ import React from 'react';
 import Color from './Color';
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ReactTooltip from 'react-tooltip';
 
 const Palette = ({
   palette,
@@ -37,7 +38,9 @@ const Palette = ({
         Palette {' '}
         <i 
           onClick={()=>onSave(palette)} 
-          className="fa fa-floppy-o icon" aria-hidden="true"
+          className="fa fa-floppy-o icon" 
+          aria-hidden="true"
+          data-tip="save"
         ></i>
       </h1>
      
@@ -58,6 +61,7 @@ const Palette = ({
         autoClose={3000}
         position="top-center"
       />
+      <ReactTooltip place='top' effect='solid'/>
     </div>
   )
 }

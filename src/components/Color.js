@@ -3,6 +3,7 @@ import React from 'react';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ReactTooltip from 'react-tooltip';
 
 const wcagContrast = require("wcag-contrast");
 
@@ -47,15 +48,18 @@ const Color = ({
                     style={{padding: '0 7px'}}
                     onClick={()=>setPickerColor(hex)}
                     className="fa fa-eyedropper icon" aria-hidden="true"
+                    data-tip="pick"
                 ></i>
                 <i style={{padding: '0 7px'}} 
                     onClick={()=>getComplements(color)} 
                     className="fa fa-adjust icon" aria-hidden="true"
+                    data-tip="contrast"
                 ></i>
                 <i style={{padding: '0 7px'}}
                     onClick={()=>deleteColor(idx)}
                     className="fa fa-times icon"
                     aria-hidden="true"
+                    data-tip="delete"
                 ></i>
             </span>
             <CopyToClipboard text={hex} onCopy={()=>onCopy(hex)}>
@@ -63,9 +67,11 @@ const Color = ({
                 className='icon' 
                 style={{padding: '0 15px'}}
                 >
-                    {hex} <i className="fas fa-clone"></i>
+                    {hex} <i data-tip="copy" className="fas fa-clone"></i>
                 </p>
             </CopyToClipboard>
+            <ReactTooltip place='top' effect='solid'/>
+
             <ToastContainer
                 autoClose={3000}
                 position="top-center"
