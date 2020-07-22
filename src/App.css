@@ -35,6 +35,7 @@ body{
     margin:auto;
 }
 .saved-palette-grid{
+    padding:20px;
     clear:both;
     display: grid;
     grid-template-columns: repeat(4, 1fr);

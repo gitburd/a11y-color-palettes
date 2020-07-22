@@ -11,6 +11,8 @@ import { ChromePicker} from 'react-color'
 import Navbar from './components/Navbar'
 import About from './components/About'
 import {db} from './FirebaseDB'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class App extends Component {
   constructor(props) {
@@ -70,9 +72,8 @@ class App extends Component {
   }
 
   setPickerColor = (hex) => {
-    console.log(hex, 'cox')
+  
     let newColor = {hex:hex}
-    console.log(newColor, 'cox')
     this.setState({pickerColor:hex, newColor})
   }
 
@@ -83,11 +84,13 @@ class App extends Component {
     })
   }
 
-  addToPalette = (color) => {
-    console.log(color, 'co')
+  addToPalette = (color, alert) => {
     let palette = [...this.state.palette,color]
+    let hex = color.hex
     this.setState({palette})
+    if(alert){toast.dark(` ${hex} added to palette!`)};
   }
+
   removeFromPalette = (index) => {
     let palette = [...this.state.palette]
     console.log('?',index)
@@ -116,6 +119,10 @@ class App extends Component {
       <div >
         <Router>
           <Navbar/>
+          <ToastContainer
+            autoClose={2000} 
+            position="top-center"
+          />
           <Switch>
             <Route exact path='/' render={props =>
               <div>
@@ -160,7 +167,7 @@ class App extends Component {
               </div>
             } />
             <Route path='/examples'>
-              <SavedPalettes />
+              <SavedPalettes  addToPalette={this.addToPalette} />
             </Route>
             <Route path='/about'>
               <About/>

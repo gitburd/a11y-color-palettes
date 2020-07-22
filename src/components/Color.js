@@ -1,7 +1,7 @@
 /* eslint-disable indent */
 import React from 'react';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
-import {ToastContainer, toast} from 'react-toastify';
+import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactTooltip from 'react-tooltip';
 
@@ -25,7 +25,7 @@ const Color = ({
     const textHexColor = whiteHexContrast > blackHexContrast ? '#fff' : '#000';
 
     const onCopy = (hex) =>{
-        toast.dark(`Copied ${hex}`);
+        toast.dark(` ${hex} copied `);
     } 
 
     return (
@@ -71,11 +71,6 @@ const Color = ({
                 </p>
             </CopyToClipboard>
             <ReactTooltip place='top' effect='solid'/>
-
-            <ToastContainer
-                autoClose={3000}
-                position="top-center"
-            />
         </div>
     );
 };

@@ -15,6 +15,7 @@
     "react-firebase": "^2.2.8",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-toast-notifications": "^2.4.0",
     "react-toastify": "^6.0.8",
     "react-tooltip": "^4.2.7",
     "wcag-contrast": "^3.0.0"

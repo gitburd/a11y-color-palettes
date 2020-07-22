@@ -1,12 +1,13 @@
-import React from 'react'
+import React from 'react';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactTooltip from 'react-tooltip';
 
+
 var wcagContrast = require("wcag-contrast")
 
-const SavedPaletteColor = ({hex}) => {
+const SavedPaletteColor = ({hex, addToPalette}) => {
     
 if(hex && hex !== null){
     let whiteHexContrast = wcagContrast.hex('#fff', hex);
@@ -14,16 +15,32 @@ if(hex && hex !== null){
     let textHexColor = whiteHexContrast > blackHexContrast ? '#fff' : '#000';
 
     const onCopy = (hex) =>{
-        toast.dark(`Copied ${hex}`);
+        toast.dark(` ${hex} copied!`);
+    }
+
+    const add = (hex) =>{
+        const color = {hex:hex}
+        addToPalette(color, true);
     }
 
     return (
         <div>
-           
+            <ReactTooltip place='top' effect='solid'/>
             <div>
                 <div 
                     style={{backgroundColor: hex, color: textHexColor, padding: '.1px 6px'}}
                 >   
+                 <span 
+                        style={{
+                        float: 'right', 
+                        display: 'block', 
+                        fontSize: 'large', 
+                        margin: '12px'
+                        }}
+                    >
+                        <i className="fa fa-plus" data-tip="add to palette" onClick={()=> add(hex)}></i>
+                    </span>
+
                     <CopyToClipboard text={hex} onCopy={()=>onCopy(hex)}>
                         <p 
                         className='icon' 
@@ -33,12 +50,9 @@ if(hex && hex !== null){
                             {hex} <i className="fas fa-clone"></i>
                         </p>
                     </CopyToClipboard>  
+                   
                 </div>
-                <ToastContainer
-                    autoClose={3000} 
-                    position="top-center"
-                />
-                <ReactTooltip place='top' effect='solid'/>
+                  
             </div>
             
         </div>
