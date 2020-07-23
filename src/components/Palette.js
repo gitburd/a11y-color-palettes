@@ -1,8 +1,10 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import Color from './Color';
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactTooltip from 'react-tooltip';
+
 
 const Palette = ({
   palette,
@@ -24,6 +26,11 @@ const Palette = ({
           <h2>Your Palette is empty.</h2>
           <h2> Use the color picker get started.</h2>
           <i style={{animation: 'slide1 1s ease-in-out infinite', fontSize: '60px'}} className="fa fa-long-arrow-right arrow1" aria-hidden="true"></i>
+
+        <h2>New to A11y Palette?</h2>
+        <Link to='/about'>
+          <button className='cta-btn'>Watch our demos</button>
+        </Link>
         </div>
       </div>
     );

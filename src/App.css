@@ -1,147 +1,162 @@
 body{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: #fff;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #fff;
 }
 .example-text{
-    clear:both; 
+  clear:both; 
 }
 
 .btn{
-    margin-right: 10px;
-    padding:3px;
+  margin-right: 10px;
+  padding:3px;
 }
 
 .btn:hover{
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .checker-emoji{
-    padding-right: 20px;
-    font-size: medium;
+  padding-right: 20px;
+  font-size: medium;
 }
 
 .contrast-grid{
-    clear:both;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 0;
-    margin:auto;
+  clear:both;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0;
+  margin:auto;
 }
 .app-grid{
-    clear:both;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 2rem;
-    margin:auto;
+  clear:both;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+  margin:auto;
 }
 .saved-palette-grid{
-    padding:20px;
-    clear:both;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 2rem;
-    margin:auto;
+  padding:20px;
+  clear:both;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 2rem;
+  margin:auto;
 }
 
 .btn-grid{
-    clear:both;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 0;
-    margin:auto;
-    margin: 0 -1px;
+  clear:both;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0;
+  margin:auto;
+  margin: 0 -1px;
 }
 
 .display-btn{
-    padding:10px 4px;
-    text-align: center;
-    font-size: 16px;
-    color: #3A0D34;
-    background-color:#fff;
-    font-weight: bold;
-    border: .75px solid #181416;
-    margin:0;
+  padding:10px 4px;
+  text-align: center;
+  font-size: 16px;
+  color: #3A0D34;
+  background-color:#fff;
+  font-weight: bold;
+  border: .75px solid #181416;
+  margin:0;
 }
 
 .display-btn:hover{
-    cursor: pointer;
-    background-color: #3A0D34;
-    color:#fff;
-    border: .75px solid #181416;
+  cursor: pointer;
+  background-color: #3A0D34;
+  color:#fff;
+  border: .75px solid #181416;
+}
+
+.cta-btn{
+  cursor: pointer;
+  background-color: #3A0D34;
+  color:#fff;
+  border: 2px solid #181416;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.cta-btn:hover{
+  color: #3A0D34;
+  background-color:#fff;
 }
 
 h1{
-    font-size: 24px;
+  font-size: 24px;
 }
 
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #3A0D34;
-  }
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #3A0D34;
+}
   
-  li {
-    float: left;
-    font-size: 18px;
-  }
+li {
+  float: left;
+  font-size: 18px;
+}
   
-  li a {
-    display: block;
-    color: #fff;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
+li a {
+  display: block;
+  color: #fff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
   
-  li a:hover:not(.active) {
-    background-color: #111;
-  }
+li a:hover:not(.active) {
+  background-color: #111;
+}
 
-  .icon:hover{
-      cursor: pointer;
-  }
+.icon:hover{
+  cursor: pointer;
+}
 
- .link{
-    text-decoration: none;
-    font-weight: bold;
-    color: #9506a0;
- }
+.link{
+  text-decoration: none;
+  font-weight: bold;
+  color: #9506a0;
+}
 
  @keyframes slide1 {
-    0%,
-    100% {
-      transform: translate(0, 0);
-    }
-  
-    50% {
-      transform: translate(10px, 0);
-    }
+  0%,
+  100% {
+    transform: translate(0, 0);
   }
+
+  50% {
+    transform: translate(10px, 0);
+  }
+}
   
 
-  @keyframes pulse {
-    from { transform: scale(1); }
-    50% { transform: scale(0.85); }
-    to { transform: scale(1); }
-  }
-  
-  .btn-pulse{
-    animation-name: pulse;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    padding:10px 4px;
-    text-align: center;
-    font-size: 16px;
-    background-color: #3A0D34;
-    color:#fff;
-    font-weight: bold;
-    border: .75px solid #181416;
-    margin:0;
-  }
-  .btn-pulse:hover,
-  .btn-pulse:focus {
-    animation-name: unset;
-    cursor: pointer;
-  }
+@keyframes pulse {
+  from { transform: scale(1); }
+  50% { transform: scale(0.85); }
+  to { transform: scale(1); }
+}
+
+.btn-pulse{
+  animation-name: pulse;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  padding:10px 4px;
+  text-align: center;
+  font-size: 16px;
+  background-color: #3A0D34;
+  color:#fff;
+  font-weight: bold;
+  border: .75px solid #181416;
+  margin:0;
+}
+.btn-pulse:hover,
+.btn-pulse:focus {
+  animation-name: unset;
+  cursor: pointer;
+}
