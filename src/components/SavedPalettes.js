@@ -10,6 +10,7 @@ const SavedPalettes = ({addToPalette}) => {
 
     useEffect(() => {
         db.collection("palettes")
+        .orderBy('created', "desc")
         .get()
         .then(querySnapshot => {
             const palettes = querySnapshot.docs.map(doc => doc.data());

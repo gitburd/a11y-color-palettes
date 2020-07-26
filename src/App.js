@@ -102,7 +102,8 @@ class App extends Component {
 
   savePalette = (palette) => {
     db.collection("palettes").add({
-      colors: palette
+      colors: palette,
+      created: new Date()
   })
   .then(function(docRef) {
       console.log("Document written with ID: ", docRef.id);
