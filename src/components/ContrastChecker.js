@@ -5,13 +5,13 @@ const ContrastChecker = ({backgroundColor, textColor}) => {
     // render() {
         const res = wcagContrast.hex(backgroundColor, textColor).toFixed(2);
         // const score = wcagContrast.score(res);
-        const headerContrastAAA = res > 4.5 ? `✅` : `❌`
-        const boldContrastAAA = res > 4.5 ? `✅` : `❌`
-        const smallContrastAAA = res > 7.1 ? `✅` : `❌`
+        const headerContrastAAA = res >= 4.5 ? `✅` : `❌`
+        const boldContrastAAA = res >= 4.5 ? `✅` : `❌`
+        const smallContrastAAA = res >= 7.1 ? `✅` : `❌`
         
-        const headerContrastAA = res >  3.1 ? `✅` : `❌`
-        const boldContrastAA = res > 3.1 ? `✅` : `❌`
-        const smallContrastAA = res > 4.5 ? `✅` : `❌`
+        const headerContrastAA = res >=  3.1 ? `✅` : `❌`
+        const boldContrastAA = res >= 3.1 ? `✅` : `❌`
+        const smallContrastAA = res >= 4.5 ? `✅` : `❌`
 
         return (
             <div className='example-text'>

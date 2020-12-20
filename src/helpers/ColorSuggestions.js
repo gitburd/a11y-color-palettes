@@ -20,20 +20,32 @@ export const getColorSuggetions = (color) => {
         
     const complements = [];
 
-    let H1 = H + 42;
+    let H1 = H + 20;
     if(H1 > 360) { H1 -= 360}
-    
-    let H2 = H + 105;
-    if(H2 < 0) { H2 += 360}
-    
-    let H3 = H + 190;
-    if(H3 < 0) { H3 += 360}
 
-    let H4 = H + 273;
-    if(H4 > 360) { H4 -= 360}
+    let H2 = H + 42;
+    if(H2 > 360) { H2 -= 360}
     
-    let H5 = H + 320;
+    let H3 = H + 70;
+    if(H3 > 360) { H3 -= 360}
+
+    let H4 = H + 105;
     if(H4 > 360) { H4 -= 360}
+
+    let H5 = H + 150;
+    if(H5 > 360) { H5 -= 360}
+    
+    let H6 = H + 190;
+    if(H6 > 360) { H6 -= 360}
+
+    let H7 = H + 230;
+    if(H7 > 360) { H7 -= 360}
+  
+    let H8 = H + 273;
+    if(H8 > 360) { H8 -= 360}
+
+    // let H9 = H + 280;
+    // if(H8 > 360) { H8 -= 360}
 
     
     // let H1 = H + 40;
@@ -90,18 +102,18 @@ export const getColorSuggetions = (color) => {
     //     L2 = L - 80;
     // }
 
-    if(S < 15) {S += 50}
-    if(S > 85) {S -= 75}
-    complements.push( [H, 95, L2]);
-    complements.push([H,50, L2]);
-    complements.push( [H1, 95, L2]);
-    complements.push([H1,50, L2]);
-    complements.push( [H2, 95, L2]);
-    complements.push([H2,50, L2]);
-    complements.push( [H3, 95, L2]);
-    complements.push([H3,50, L2]);
-    complements.push( [H4, 95, L2]);
-    complements.push([H4,50, L2]);
+    if(S < 15) {S += 70}
+    if(S > 85) {S -= 40}
+    complements.push( [H, S, L2]);
+    complements.push([H1,70, L2]);
+    complements.push( [H2, S, L2]);
+    complements.push([H3,70, L2]);
+    complements.push( [H4, S, L2]);
+    complements.push([H5,70, L2]);
+    complements.push( [H6, S, L2]);
+    complements.push([H7,70, L2]);
+    complements.push( [H8, S, L2]);
+    complements.push([H,70, L2]);
     // complements.push( [H5, 95, L2]);
     // complements.push([H5,50, L2]);
 
@@ -154,7 +166,7 @@ const findMidRangeComplements = (hex, L) => {
         } else {
             // we are try to find a dark color
             if(blackHexContrast > 20){
-                lightPair.push(28,28) 
+                lightPair.push(24,24) 
             } else if (blackHexContrast >18){
                 lightPair.push(26,26) 
             } else if (blackHexContrast > 15){
