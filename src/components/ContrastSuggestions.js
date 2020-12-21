@@ -39,37 +39,43 @@ const ContrastSuggestions = ({contrastColor, setPickerColor, palette}) => {
                     </div>
                     <div className="contrast-grid">
                         {suggestions && suggestions.length > 0 && (
-                        suggestions.map((c,idx) => (
-                        <div 
-                            key={idx} 
-                            style={{
-                                color:hex, 
-                                backgroundColor:c, 
-                                border:`1px solid ${hex}`, 
-                                padding: '0 5px'
-                            }}
-                        >
-                            <span 
-                            style={{
-                            float: 'right', 
-                            display: 'block', 
-                            fontSize: 'large', 
-                            margin: '12px'
-                            }}
+                            suggestions.map((c,idx) => (
+                            <div
+                                key={idx}
+                                style={{
+                                    color:hex,
+                                    backgroundColor:c,
+                                    border:`1px solid ${hex}`,
+                                    padding: '0 5px'
+                                }}
                             >
-                            <i
-                            style={{padding: '0 7px'}}
-                            onClick={()=>onClick(c)}
-                            className="fa fa-eyedropper icon" data-tip="pick" aria-hidden="true"
-                            >    
-                            </i>
-                            </span>
-                            <CopyToClipboard text={c} onCopy={()=>onCopy(c)}>
-                                <p style={{padding: '0 15px'}}>{c}{' '} 
-                                <i className="fas fa-clone icon" data-tip="copy"></i></p>
-                            </CopyToClipboard>
-                         </div>
+                                <span
+                                style={{
+                                float: 'right',
+                                display: 'block',
+                                fontSize: 'large',
+                                margin: '12px'
+                                }}
+                                >
+                                <i
+                                style={{padding: '0 7px'}}
+                                onClick={()=>onClick(c)}
+                                className="fa fa-eyedropper icon" data-tip="pick" aria-hidden="true"
+                                >
+                                </i>
+                                </span>
+                                <CopyToClipboard text={c} onCopy={()=>onCopy(c)}>
+                                    <p style={{padding: '0 15px'}}>{c}{' '}
+                                    <i className="fas fa-clone icon" data-tip="copy"></i></p>
+                                </CopyToClipboard>
+                            </div>
                         )))}
+                        {suggestions && suggestions.length > 0 && (suggestions[0] === "#fff" || suggestions[0] === "#000") &&
+                            <>
+                            <br/>
+                            <p>WARNING: Low contrast color selected.</p>
+                            </>
+                        }
                     </div>
                     <ToastContainer
                         autoClose={3000}
