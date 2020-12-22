@@ -18,7 +18,7 @@ export const getColorSuggetions = (color) => {
         L = color.hsl.l * 100;
     }
         
-    const complements = [];
+    let complements = [];
 
     let H1 = H + 20;
     if(H1 > 360) { H1 -= 360}
@@ -44,8 +44,6 @@ export const getColorSuggetions = (color) => {
     let H8 = H + 273;
     if(H8 > 360) { H8 -= 360}
 
-
-
     let L1;
     let L2;
     let S2;
@@ -58,25 +56,36 @@ export const getColorSuggetions = (color) => {
     L2 = Ls[1];
 
     if(L1 === 100){
-        return ["#fff"];
+        complements.push([H, 85,  L-(L/3)]);
+        complements.push([H, 78,  L-(L/2.5)]);
+        complements =  complements.map((HSL) => `#${convert.hsl.hex(HSL)}`);
+        complements.unshift("#ffffff");
+
+        return complements;
     }else if (L1 === 0){
-        return ["#000"];
+        console.log('hsl', H,S, L)
+        complements.push([H, 98,  L-(L/1.75)]);
+        complements.push([H, 88,  L-(L/3)]);
+        complements =  complements.map((HSL) => `#${convert.hsl.hex(HSL)}`);
+        complements.unshift("#000000");
+
+        return complements;
     } else {
         S2 = Ls[2];
         S3= Ls[3];
 
         if(S < 15) {S += 33}
         if(S > 85) {S -= 33}
-        complements.push( [H, S, L1]);
+        complements.push( [H, S2, L1]);
         // complements.push([H,S2, L1]);
         complements.push([H1,S3, L2]);
-        complements.push( [H2, S, L1]);
+        complements.push( [H2, S3, L1]);
         // complements.push([H3,S2, L1]);
         complements.push( [H4, S3, L2]);
         complements.push( [H4, S3, L1]);
         complements.push([H5,S2, L1]);
         complements.push( [H6, S3, L2]);
-        complements.push([H7,S, L1]);
+        complements.push([H7,S2, L1]);
         complements.push( [H8, S2, L1]);
         complements.push( [H8, S3, L2]);
 
@@ -116,18 +125,21 @@ const findMidRangeComplements = (hex, L) => {
 
             else if (whiteHexContrast > 10){
                 console.log('case 5')
-                lightPair.push(90, 83, 75, 85)
+                lightPair.push(90, 83, 80, 85)
             }
-            
+                        
             else if (whiteHexContrast > 7){
                 console.log('case 6')
-                lightPair.push(93, 90, 75, 90)
+                // check
+                // #085A68
+                lightPair.push(94, 91, 80, 85)
             }
-
-            // else if (whiteHexContrast > 7){
-            //     console.log('case 7')
-            //     lightPair.push(94, 92, 80, 95)
-            // }
+            
+            else if (whiteHexContrast > 5.5){
+                console.log('case 7')
+                // #0d7081
+                lightPair.push(96, 93, 88, 79)
+            }
 
             else {
                 // these will be a bad match, even for white
@@ -150,14 +162,11 @@ const findMidRangeComplements = (hex, L) => {
             }
             else if (blackHexContrast > 10){
                 console.log('case 12')
-                lightPair.push(17,20, 35, 28);
+                lightPair.push(18,20, 35, 28);
             }else if (blackHexContrast > 7.5){
                 console.log('case 13')
                 // #5ead83
                 lightPair.push(12, 18, 28, 30)
-            // }else if (blackHexContrast > 5.5){
-            //     lightPair.push(11, 11)
-            //     console.log('case 14')
             }else {
                 console.log('case 15')
                 lightPair.push(0, 0, 0, 0)

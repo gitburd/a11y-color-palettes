@@ -5,6 +5,39 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactTooltip from 'react-tooltip';
 
+const ColorTemplate  = ({c, hex, onClick, onCopy}) =>{
+    return (
+        <div
+            style={{
+                color:hex,
+                backgroundColor:c,
+                border:`1px solid ${hex}`,
+                padding: '0 5px'
+            }}
+        >
+            <span
+            style={{
+            float: 'right',
+            display: 'block',
+            fontSize: 'large',
+            margin: '12px'
+            }}
+            >
+            <i
+            style={{padding: '0 7px'}}
+            onClick={()=>onClick(c)}
+            className="fa fa-eyedropper icon" data-tip="pick" aria-hidden="true"
+            >
+            </i>
+            </span>
+            <CopyToClipboard text={c} onCopy={()=>onCopy(c)}>
+                <p style={{padding: '0 15px'}}>{c}{' '}
+                <i className="fas fa-clone icon" data-tip="copy"></i></p>
+            </CopyToClipboard>
+        </div>
+    )
+}
+
 const ContrastSuggestions = ({contrastColor, setPickerColor, palette}) => {
     var wcagContrast = require("wcag-contrast")
     const {hex} = contrastColor
@@ -21,8 +54,13 @@ const ContrastSuggestions = ({contrastColor, setPickerColor, palette}) => {
 
     const onCopy = (c) =>{
         toast.dark(`Copied ${c}`)
-    } 
+    }
 
+    let warningHex;
+    if(suggestions && suggestions.length === 3){
+        warningHex = suggestions[0]==="#000000" ? "#ffffff" : "#000000"
+    }
+console.log(suggestions[0],'s0', warningHex)
     return (
         <div>
             {palette && palette.length > 0 && 
@@ -38,44 +76,22 @@ const ContrastSuggestions = ({contrastColor, setPickerColor, palette}) => {
                         <h1 style={{padding: '3px 15px', margin: '0'}}>Contrast: {hex}</h1>
                     </div>
                     <div className="contrast-grid">
-                        {suggestions && suggestions.length > 0 && (
+                        {suggestions && suggestions.length > 0 && suggestions.length !== 3 &&(
                             suggestions.map((c,idx) => (
-                            <div
-                                key={idx}
-                                style={{
-                                    color:hex,
-                                    backgroundColor:c,
-                                    border:`1px solid ${hex}`,
-                                    padding: '0 5px'
-                                }}
-                            >
-                                <span
-                                style={{
-                                float: 'right',
-                                display: 'block',
-                                fontSize: 'large',
-                                margin: '12px'
-                                }}
-                                >
-                                <i
-                                style={{padding: '0 7px'}}
-                                onClick={()=>onClick(c)}
-                                className="fa fa-eyedropper icon" data-tip="pick" aria-hidden="true"
-                                >
-                                </i>
-                                </span>
-                                <CopyToClipboard text={c} onCopy={()=>onCopy(c)}>
-                                    <p style={{padding: '0 15px'}}>{c}{' '}
-                                    <i className="fas fa-clone icon" data-tip="copy"></i></p>
-                                </CopyToClipboard>
-                            </div>
+                                <ColorTemplate key={idx} c={c} hex={hex} onClick={onClick} onCopy={onCopy}/>
+                            
                         )))}
-                        {suggestions && suggestions.length > 0 && (suggestions[0] === "#fff" || suggestions[0] === "#000") &&
+                        {suggestions && suggestions.length === 3 &&(
                             <>
+                            <ColorTemplate key={0} c={suggestions[0]} hex={warningHex} onClick={onClick} onCopy={onCopy}/>
                             <br/>
-                            <p>WARNING: Low contrast color selected.</p>
+                            <p style={{paddingLeft:'10px'}}>WARNING: Low contrast color selected. For more matches consider:</p>
+                            <br/>
+                            <ColorTemplate key={1} c={suggestions[1]} hex={warningHex} onClick={onClick} onCopy={onCopy}/>
+                            <ColorTemplate key={2} c={suggestions[2]} hex={warningHex} onClick={onClick} onCopy={onCopy}/>
                             </>
-                        }
+
+                        )}
                     </div>
                     <ToastContainer
                         autoClose={3000}
