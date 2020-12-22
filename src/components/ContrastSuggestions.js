@@ -87,8 +87,8 @@ console.log(suggestions[0],'s0', warningHex)
                             <br/>
                             <p style={{paddingLeft:'10px'}}>WARNING: Low contrast color selected. For more matches consider:</p>
                             <br/>
-                            <ColorTemplate key={1} c={suggestions[1]} hex={warningHex} onClick={onClick} onCopy={onCopy}/>
-                            <ColorTemplate key={2} c={suggestions[2]} hex={warningHex} onClick={onClick} onCopy={onCopy}/>
+                            <ColorTemplate key={1} c={suggestions[1]} hex={"#fff"} onClick={onClick} onCopy={onCopy}/>
+                            <ColorTemplate key={2} c={suggestions[2]} hex={"#fff"} onClick={onClick} onCopy={onCopy}/>
                             </>
 
                         )}

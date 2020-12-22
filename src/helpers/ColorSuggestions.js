@@ -56,16 +56,16 @@ export const getColorSuggetions = (color) => {
     L2 = Ls[1];
 
     if(L1 === 100){
-        complements.push([H, 85,  L-(L/3)]);
-        complements.push([H, 78,  L-(L/2.5)]);
+        complements.push([H, S*100,  L-(L/3)]);
+        complements.push([H, S*100,  L-(L/2.5)]);
         complements =  complements.map((HSL) => `#${convert.hsl.hex(HSL)}`);
         complements.unshift("#ffffff");
 
         return complements;
     }else if (L1 === 0){
         console.log('hsl', H,S, L)
-        complements.push([H, 98,  L-(L/1.75)]);
-        complements.push([H, 88,  L-(L/3)]);
+        complements.push([H, S*100,  L-(L/1.75)]);
+        complements.push([H, S*100,  L-(L/3)]);
         complements =  complements.map((HSL) => `#${convert.hsl.hex(HSL)}`);
         complements.unshift("#000000");
 
