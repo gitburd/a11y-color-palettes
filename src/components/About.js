@@ -5,7 +5,7 @@ import paletteFromPalette from '../video/paletteFromPalette.mov'
 
 const About = () => {
     return (
-        <div style={{
+        <article style={{
             margin: '30px auto',
             width: '60%',
         }}>
@@ -75,7 +75,7 @@ const About = () => {
                     Major League Hacking
                 </a> Hackathon!
             </h3>
-        </div>
+        </article>
     );
 };
 export default About;

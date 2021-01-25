@@ -113,69 +113,63 @@ class App extends Component {
   });
   }
 
-
   render() {
     const {backgroundColor, textColor} = this.state
     return (
-      <div >
-        <Router>
-          <Navbar/>
-          <ToastContainer
-            autoClose={2000} 
-            position="top-center"
-          />
-          <Switch>
-            <Route exact path='/' render={props =>
-              <div>
-                <div className='app-grid' style={{padding: '1rem'}}>
-                  <div style={{border: '3px solid #181416'}}>
-                    <Palette 
-                      savePalette = {this.savePalette}
-                      palette = {this.state.palette}
-                      setContrastColor = {this.setContrastColor}
-                      setPickerColor = {this.setPickerColor} 
-                      deleteColor = {this.removeFromPalette}
-                    />
-                  
-                    <ContrastSuggestions  
-                      contrastColor={this.state.contrastColor} 
-                      setPickerColor={this.setPickerColor} 
-                      palette={this.state.palette}
-                    />
-                  </div>
-                  <div style={{border: '3px solid #181416'}}>
-                    <ColorPickerDisplay 
-                      color={this.state.pickerColor}
-                      setBackgroundColor={this.setBackgroundColor} 
-                      setTextColor={this.setTextColor}
-                      toggleShowColorPicker={this.toggleShowColorPicker}
-                      addToPalette={this.addToPalette}
-                      newColor={this.state.newColor}
-                      palette={this.state.palette}
-                    />
-                    <div style={{backgroundColor:this.state.pickerColor}}>
-                      <ChromePicker
-                        color={ this.state.pickerColor}
-                        onChangeComplete={ this.handleColorPickerChange }
-                      />
-                    </div> 
-                    <ContrastChecker 
-                      backgroundColor={backgroundColor} 
-                      textColor={textColor}
-                    />
-                  </div>
-                </div>
-              </div>
-            } />
-            <Route path='/examples'>
-              <SavedPalettes  addToPalette={this.addToPalette} />
-            </Route>
-            <Route path='/about'>
-              <About/>
-            </Route>
-          </Switch>
-        </Router>
-      </div>
+      <Router>
+        <Navbar/>
+        <ToastContainer
+          autoClose={2000}
+          position="top-center"
+        />
+        <Switch>
+          <Route exact path='/' render={props =>
+            <main className='app-grid' style={{padding: '1rem'}}>
+              <section style={{border: '3px solid #181416'}}>
+                <Palette
+                  savePalette = {this.savePalette}
+                  palette = {this.state.palette}
+                  setContrastColor = {this.setContrastColor}
+                  setPickerColor = {this.setPickerColor}
+                  deleteColor = {this.removeFromPalette}
+                />
+                <ContrastSuggestions
+                  contrastColor={this.state.contrastColor}
+                  setPickerColor={this.setPickerColor}
+                  palette={this.state.palette}
+                />
+              </section>
+              <section style={{border: '3px solid #181416'}}>
+                <ColorPickerDisplay
+                  color={this.state.pickerColor}
+                  setBackgroundColor={this.setBackgroundColor}
+                  setTextColor={this.setTextColor}
+                  toggleShowColorPicker={this.toggleShowColorPicker}
+                  addToPalette={this.addToPalette}
+                  newColor={this.state.newColor}
+                  palette={this.state.palette}
+                />
+                <article style={{backgroundColor:this.state.pickerColor}}>
+                  <ChromePicker
+                    color={ this.state.pickerColor}
+                    onChangeComplete={ this.handleColorPickerChange }
+                  />
+                </article>
+                <ContrastChecker
+                  backgroundColor={backgroundColor}
+                  textColor={textColor}
+                />
+              </section>
+            </main>
+          } />
+          <Route path='/examples'>
+            <SavedPalettes  addToPalette={this.addToPalette} />
+          </Route>
+          <Route path='/about'>
+            <About/>
+          </Route>
+        </Switch>
+      </Router>
     )
   }
 }

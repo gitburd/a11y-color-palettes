@@ -30,20 +30,21 @@ const Color = ({
 
     return (
         <div
-        style={{
-            backgroundColor: hex,
-            color: textHexColor,
-            padding: '0.02px',
-            borderBottom: '1px solid black'
-        }}
+            style={{
+                backgroundColor: hex,
+                color: textHexColor,
+                padding: '0.02px',
+                borderBottom: '1px solid black'
+            }}
         >
            <span
-            style={{
-                float: 'right',
-                display: 'block',
-                fontSize: 'large',
-                margin: '12px'
-            }}>
+                style={{
+                    float: 'right',
+                    display: 'block',
+                    fontSize: 'large',
+                    margin: '12px'
+                }}
+            >
                 <i
                     style={{padding: '0 7px'}}
                     onClick={()=>setPickerColor(hex)}
@@ -64,8 +65,8 @@ const Color = ({
             </span>
             <CopyToClipboard text={hex} onCopy={()=>onCopy(hex)}>
                 <p
-                className='icon' 
-                style={{padding: '0 15px'}}
+                    className='icon'
+                    style={{padding: '0 15px'}}
                 >
                     {hex} <i data-tip="copy" className="fas fa-clone"></i>
                 </p>

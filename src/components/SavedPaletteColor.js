@@ -9,57 +9,45 @@ var wcagContrast = require("wcag-contrast")
 
 const SavedPaletteColor = ({hex, addToPalette}) => {
     
-if(hex && hex !== null){
-    let whiteHexContrast = wcagContrast.hex('#fff', hex);
-    let blackHexContrast = wcagContrast.hex('#000', hex);
-    let textHexColor = whiteHexContrast > blackHexContrast ? '#fff' : '#000';
+    if(hex && hex !== null){
+        let whiteHexContrast = wcagContrast.hex('#fff', hex);
+        let blackHexContrast = wcagContrast.hex('#000', hex);
+        let textHexColor = whiteHexContrast > blackHexContrast ? '#fff' : '#000';
 
-    const onCopy = (hex) =>{
-        toast.dark(` ${hex} copied!`);
-    }
+        const onCopy = (hex) =>{
+            toast.dark(` ${hex} copied!`);
+        }
 
-    const add = (hex) =>{
-        const color = {hex:hex}
-        addToPalette(color, true);
-    }
+        const add = (hex) =>{
+            const color = {hex:hex}
+            addToPalette(color, true);
+        }
 
-    return (
-        <div>
-            <ReactTooltip place='top' effect='solid'/>
-            <div>
-                <div 
-                    style={{backgroundColor: hex, color: textHexColor, padding: '.1px 6px'}}
-                >   
-                 <span 
-                        style={{
-                        float: 'right', 
-                        display: 'block', 
-                        fontSize: 'large', 
-                        margin: '12px'
-                        }}
-                    >
-                        <i className="fa fa-plus" data-tip="add to palette" onClick={()=> add(hex)}></i>
-                    </span>
-
-                    <CopyToClipboard text={hex} onCopy={()=>onCopy(hex)}>
-                        <p 
-                        className='icon' 
-                        data-tip="copy" 
+        return (
+            <div style={{backgroundColor: hex, color: textHexColor, padding: '.1px 6px'}}>
+                <ReactTooltip place='top' effect='solid'/>
+                <span
+                    style={{
+                    float: 'right',
+                    display: 'block',
+                    fontSize: 'large',
+                    margin: '12px'
+                    }}
+                >
+                    <i className="fa fa-plus" data-tip="add to palette" onClick={()=> add(hex)}></i>
+                </span>
+                <CopyToClipboard text={hex} onCopy={()=>onCopy(hex)}>
+                    <p
+                        className='icon'
+                        data-tip="copy"
                         style={{padding: '0 15px'}}
-                        >
-                            {hex} <i className="fas fa-clone"></i>
-                        </p>
-                    </CopyToClipboard>  
-                   
-                </div>
-                  
+                    >
+                        {hex} <i className="fas fa-clone"></i>
+                    </p>
+                </CopyToClipboard>
             </div>
-            
-        </div>
-    )
-
-} else return (<></>)
-
+        )
+    } else return (<></>)
 }
 
 export default SavedPaletteColor;

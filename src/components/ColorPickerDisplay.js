@@ -17,21 +17,21 @@ const ColorPickerDisplay = (
     }
     const addBtnClass = palette && palette.length > 0 ? 'display-btn' : 'btn-pulse'
     return (
-        <div>
+        <section>
             <h1 style={{padding: '5px 20px', margin: '0'}}>Tools</h1>
-            <div className='btn-grid'>
+            <article className='btn-grid'>
                 <p className='display-btn' onClick={() => setBackgroundColor(color)}>Backgorund</p>
                 <p className='display-btn' onClick={() => setTextColor(color)}>Text Color</p>
                 <p className={addBtnClass} onClick={() => addToPalette(newColor)}>Add to Palette</p>
                 <CopyToClipboard text={color} onCopy={(color)=>onCopy(color)}>
                     <p className='display-btn' onClick={(color)=> console.log(color)}>Copy</p>
                 </CopyToClipboard>
-            </div>
+            </article>
             <ToastContainer
                 autoClose={3000}
                 position="top-center"
             />
-        </div>
+        </section>
     );
 };
 
