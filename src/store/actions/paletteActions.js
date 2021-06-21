@@ -59,3 +59,18 @@ export const getPalettes = (authId) => {
   }
 };
 
+
+export const deletePalette = (id) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+
+    firestore.collection("palettes").doc(id).delete().then(function () {
+      console.log("Document successfully deleted!");
+      dispatch({ type: 'DELETE_PALETTE', paletteId: id });
+    })
+      .catch(function (error) {
+        console.error("Error removing document: ", error);
+        dispatch({ type: 'DELETE_PALETTE_ERROR', error })
+      });
+  }
+};

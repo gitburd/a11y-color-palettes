@@ -2,27 +2,44 @@ import React, { useEffect, useState } from 'react'
 import SavedPaletteColor from './SavedPaletteColor'
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { getPalettes } from "../store/actions/paletteActions"
+import { deletePalette } from "../store/actions/paletteActions";
 
 const UserPalettes = () => {
-    const { palettes, authId } = useSelector(
+    const { palettes, loadPalettes, authId } = useSelector(
         (state) => ({
             palettes: state.palette.palettes,
+            loadPalettes: state.palette.loadPalettes,
             authId: state.firebase.auth.uid
         }),
         shallowEqual
     );
     const dispatch = useDispatch();
 
+    const del = (e, palette) => {
+        e.preventDefault();
+        dispatch(deletePalette(palette.id))
+    }
+
     useEffect(() => {
         dispatch(getPalettes(authId))
-    }, [authId])
+    }, [authId, loadPalettes])
 
     return (
         <main>
-            <h1 style={{ padding: '20px' }} >Saved Palettes</h1>
+            <h1 style={{ padding: '0 20px', margin: '20px 0 0 0' }}>Saved Palettes</h1>
             <section className='saved-palette-grid'>
-                {palettes && palettes.length > 0 && palettes.map((pal, idx) =>
-                    <article key={idx}>
+                {palettes && palettes.length > 0 && palettes.map(pal =>
+                    <article key={pal.id}>
+                        <p
+                            className='icon'
+                            style={{
+                                fontSize: 'large',
+                                margin: '12px 0 12px 88%'
+                            }}
+                        >
+                            <i className="fa fa-trash-o" data-tip="Delete" onClick={e => del(e, pal)}></i>
+                        </p>
+
                         {pal && pal.colors && pal.colors.length > 0
                             && pal.colors.map((color, idx) =>
                                 <SavedPaletteColor

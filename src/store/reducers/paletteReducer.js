@@ -3,7 +3,8 @@ import { persistReducer } from "redux-persist";
 
 const initState = {
   palette: [],
-  palettes: []
+  palettes: [],
+  loadPalettes: false
 };
 
 const persistConfig = {
@@ -35,6 +36,12 @@ const paletteReducer = (state = initState, action) => {
       return {
         ...state,
         palettes: action.palettes
+      };
+    case "DELETE_PALETTE":
+      console.log("reducer!", action.paletteId)
+      return {
+        ...state,
+        loadPalettes: !state.loadPalettes
       };
     default:
       return state;
