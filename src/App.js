@@ -16,6 +16,7 @@ import { setPickerColor } from "./store/actions/toolsActions"
 import 'react-toastify/dist/ReactToastify.css';
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
+import UserPalettes from './components/UserPalettes'
 
 class App extends Component {
   constructor(props) {
@@ -57,7 +58,10 @@ class App extends Component {
             </main>
           } />
           <Route path='/examples'>
-            <SavedPalettes addToPalette={this.addToPalette} />
+            <SavedPalettes />
+          </Route>
+          <Route path='/palettes'>
+            <UserPalettes />
           </Route>
           <Route path='/about'>
             <About />

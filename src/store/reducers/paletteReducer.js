@@ -2,8 +2,8 @@ import storage from "redux-persist/lib/storage/session";
 import { persistReducer } from "redux-persist";
 
 const initState = {
-    palette: [],
-    palettes:[]
+  palette: [],
+  palettes: []
 };
 
 const persistConfig = {
@@ -20,16 +20,22 @@ const paletteReducer = (state = initState, action) => {
       };
     case "REMOVE_COLOR_FROM_PALETTE":
       let palette = [...state.palette]
-      palette = palette.filter((color, idx) => {return idx !== action.index})
+      palette = palette.filter((color, idx) => { return idx !== action.index })
       return {
         ...state,
         palette: palette
-    };
+      };
     case "SAVE_PALETTE":
       return {
         ...state,
         backgroundColor: action.backgroundColor
-    };
+      };
+    case "GET_PALETTES":
+      console.log("reducer!", action.palettes)
+      return {
+        ...state,
+        palettes: action.palettes
+      };
     default:
       return state;
   }
