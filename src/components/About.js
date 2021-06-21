@@ -63,18 +63,6 @@ const About = () => {
                 accessibility guidlines help designers pick text and background colors that have enough luminosity contrast to be easily read by people how experince low vision or don't see color.
                 There are differnt standards for large and bold text than for small text.  
             </p>
-
-            <h3 style={{paddingTop: '40px', textAlign: 'center'}}>
-                Ally Palette was made as part of a {' '}
-                <a
-                    href="https://mlh.io/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className='link'
-                >
-                    Major League Hacking
-                </a> Hackathon!
-            </h3>
         </article>
     );
 };

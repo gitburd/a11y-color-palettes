@@ -96,8 +96,6 @@ export const getColorSuggetions = (color) => {
 const findMidRangeComplements = (hex, L) => {
     const whiteHexContrast = wcagContrast.hex('#fff', hex);
     const blackHexContrast = wcagContrast.hex('#000', hex);
-    
-    console.log(whiteHexContrast, blackHexContrast, 'contr')
     let lightPair = []
 
     if(!lightPair || lightPair.length === 0){
@@ -105,21 +103,21 @@ const findMidRangeComplements = (hex, L) => {
         let L2;
         if (whiteHexContrast > 5.5 && blackHexContrast > 5.5) {
             if(whiteHexContrast >= blackHexContrast ){
-                console.log('case 1')
+                // console.log('case 1')
                 lightPair = [80, 88, 90, 70]
             }
             else {
-                console.log('case 2')
+                // console.log('case 2')
                 lightPair = [14, 8, 20, 30]
             }
         } else if (whiteHexContrast > blackHexContrast){
             if (whiteHexContrast > 20){
                 // this is black
-                console.log('case 3')
+                // console.log('case 3')
                 lightPair.push(85, 76, 70, 90)
             }
             if (whiteHexContrast > 15){
-                console.log('case 4')
+                // console.log('case 4')
                 lightPair.push(78, 88, 70, 80)
             }
 
@@ -129,21 +127,21 @@ const findMidRangeComplements = (hex, L) => {
             }
                         
             else if (whiteHexContrast > 7){
-                console.log('case 6')
+                // console.log('case 6')
                 // check
                 // #085A68
                 lightPair.push(94, 91, 80, 85)
             }
             
             else if (whiteHexContrast > 5.5){
-                console.log('case 7')
+                // console.log('case 7')
                 // #0d7081
                 lightPair.push(96, 93, 88, 79)
             }
 
             else {
                 // these will be a bad match, even for white
-                console.log('case 8')
+                // console.log('case 8')
                 lightPair.push(100,100,100,100)
             }
 
@@ -151,24 +149,24 @@ const findMidRangeComplements = (hex, L) => {
             // we are try to find a dark color
             if(blackHexContrast > 20){
                 // this is white
-                console.log('case 9')
+                // console.log('case 9')
                 lightPair.push(28,28,40,30) 
             } else if (blackHexContrast >18){
-                console.log('case 10')
+                // console.log('case 10')
                 lightPair.push(26,26,40,30) 
             } else if (blackHexContrast > 15){
-                console.log('case 11')
+                // console.log('case 11')
                 lightPair.push(17,21,44,30) 
             }
             else if (blackHexContrast > 10){
-                console.log('case 12')
+                // console.log('case 12')
                 lightPair.push(18,20, 35, 28);
             }else if (blackHexContrast > 7.5){
-                console.log('case 13')
+                // console.log('case 13')
                 // #5ead83
                 lightPair.push(12, 18, 28, 30)
             }else {
-                console.log('case 15')
+                // console.log('case 15')
                 lightPair.push(0, 0, 0, 0)
             }   
         }

@@ -4,21 +4,19 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactTooltip from 'react-tooltip';
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import { setContrastColor, setPickerColor } from "../store/actions/toolsActions";
+import { savePalette, removeFromPalette } from "../store/actions/paletteActions"
 
 const wcagContrast = require("wcag-contrast");
 
 const Color = ({
     color,
-    deleteColor, 
-    setContrastColor,
-    setPickerColor,
     idx
     }) => { 
-    const {hex} = color;
 
-    const getComplements = (color) => {
-        setContrastColor(color);
-    };
+    const dispatch = useDispatch();
+    const {hex} = color;
 
     const whiteHexContrast = wcagContrast.hex('#fff', hex);
     const blackHexContrast = wcagContrast.hex('#000', hex);
@@ -47,17 +45,18 @@ const Color = ({
             >
                 <i
                     style={{padding: '0 7px'}}
-                    onClick={()=>setPickerColor(hex)}
+                    onClick={()=>console.log(color)}
+                    onClick={()=>dispatch(setPickerColor(color))}
                     className="fa fa-eyedropper icon" aria-hidden="true"
                     data-tip="pick"
                 ></i>
-                <i style={{padding: '0 7px'}} 
-                    onClick={()=>getComplements(color)} 
+                <i style={{padding: '0 7px'}}
+                    onClick={()=>dispatch(setContrastColor(color))}
                     className="fa fa-adjust icon" aria-hidden="true"
                     data-tip="contrast"
                 ></i>
                 <i style={{padding: '0 7px'}}
-                    onClick={()=>deleteColor(idx)}
+                    onClick={()=>dispatch(removeFromPalette(idx))}
                     className="fa fa-times icon"
                     aria-hidden="true"
                     data-tip="delete"

@@ -4,6 +4,8 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactTooltip from 'react-tooltip';
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import {  setPickerColor } from "../store/actions/toolsActions";
 
 const ColorTemplate  = ({c, hex, onClick, onCopy}) =>{
     return (
@@ -38,18 +40,29 @@ const ColorTemplate  = ({c, hex, onClick, onCopy}) =>{
     )
 }
 
-const ContrastSuggestions = ({contrastColor, setPickerColor, palette}) => {
-    var wcagContrast = require("wcag-contrast")
-    const {hex} = contrastColor
+const ContrastSuggestions = () => {
+    const dispatch = useDispatch();
+    const { contrastColor,palette } = useSelector(
+        (state) => ({
+          contrastColor: state.tools.contrastColor,
+          palette: state.palette.palette
+        }),
+        shallowEqual
+      );
+
+    var wcagContrast = require("wcag-contrast");
+    const {hex} = contrastColor;
 
     const suggestions = getColorSuggetions(contrastColor);
    
     const whiteHexContrast = wcagContrast.hex('#fff', hex);
     const blackHexContrast = wcagContrast.hex('#000', hex);
-    const textHexColor = whiteHexContrast > blackHexContrast ? '#fff' : '#000'
+    const textHexColor = whiteHexContrast > blackHexContrast ? '#fff' : '#000';
 
     const onClick = (color) => {
-        setPickerColor(color);
+        let pickerColor = {hex:color}
+        console.log("HERE?", pickerColor)
+        dispatch(setPickerColor(pickerColor));
     }
 
     const onCopy = (c) =>{

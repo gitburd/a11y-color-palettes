@@ -4,15 +4,18 @@ import Color from './Color';
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactTooltip from 'react-tooltip';
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import { savePalette } from "../store/actions/paletteActions"
 
+const Palette = () => {
+  const { palette } = useSelector(
+    (state) => ({
+      palette: state.palette.palette
+    }),
+    shallowEqual
+  );
 
-const Palette = ({
-  palette,
-  savePalette,
-  setContrastColor,
-  setPickerColor,
-  deleteColor}) => {
-
+  const dispatch = useDispatch()
   if (!palette || palette.length === 0) {
     return (
       <article
@@ -37,7 +40,7 @@ const Palette = ({
     );
   }
   const onSave = (palette) =>{
-    savePalette(palette);
+    dispatch(savePalette(palette));
     toast.dark(`Saved to Examples`);
   }   
   return (
@@ -58,9 +61,6 @@ const Palette = ({
             idx={idx}
             key={idx}
             color={color}
-            setContrastColor = {setContrastColor}
-            setPickerColor = {setPickerColor}
-            deleteColor = {deleteColor}
           />
         ))
       )}

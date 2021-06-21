@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import SavedPaletteColor from './SavedPaletteColor'
 import {db} from '../FirebaseDB'
 
-const SavedPalettes = ({addToPalette}) => {
+const SavedPalettes = () => {
     const [palettes, setPalettes] = useState([]);
 
     useEffect(() => {
@@ -15,7 +15,7 @@ const SavedPalettes = ({addToPalette}) => {
             setPalettes(palettes)
         })
     }, [])
-    
+
     return (
         <main>
             <h1 style={{padding: '20px'}} >Saved Palettes</h1>
@@ -25,8 +25,7 @@ const SavedPalettes = ({addToPalette}) => {
                         {pal && pal.colors && pal.colors.length > 0 
                         && pal.colors.map((color, idx) => 
                             <SavedPaletteColor  
-                                key={idx} hex={color.hex} color={color} 
-                                addToPalette={addToPalette}
+                                key={idx} hex={color.hex} color={color}
                             />
                         )}
                     </article>

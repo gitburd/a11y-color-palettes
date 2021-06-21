@@ -3,12 +3,14 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactTooltip from 'react-tooltip';
-
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import {addToPalette} from "../store/actions/paletteActions";
 
 var wcagContrast = require("wcag-contrast")
 
-const SavedPaletteColor = ({hex, addToPalette}) => {
-    
+const SavedPaletteColor = ({hex}) => {
+    const dispatch = useDispatch();
+
     if(hex && hex !== null){
         let whiteHexContrast = wcagContrast.hex('#fff', hex);
         let blackHexContrast = wcagContrast.hex('#000', hex);
@@ -19,8 +21,9 @@ const SavedPaletteColor = ({hex, addToPalette}) => {
         }
 
         const add = (hex) =>{
-            const color = {hex:hex}
-            addToPalette(color, true);
+            toast.dark(` ${hex} added to palette!`)
+            let color = {hex}
+            dispatch(addToPalette(color));
         }
 
         return (
