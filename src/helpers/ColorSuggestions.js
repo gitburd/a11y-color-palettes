@@ -122,7 +122,7 @@ const findMidRangeComplements = (hex, L) => {
             }
 
             else if (whiteHexContrast > 10){
-                console.log('case 5')
+                // console.log('case 5')
                 lightPair.push(90, 83, 80, 85)
             }
                         

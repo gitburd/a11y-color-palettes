@@ -7,47 +7,48 @@ import ContrastSuggestions from './components/ContrastSuggestions'
 import ColorPickerDisplay from './components/ColorPickerDisplay'
 import Palette from './components/Palette'
 import SavedPalettes from './components/SavedPalettes'
-import { ChromePicker} from 'react-color'
+import { ChromePicker } from 'react-color'
 import Navbar from './components/Navbar'
 import About from './components/About'
-import {db} from './FirebaseDB'
+import { db } from './FirebaseDB'
 import { ToastContainer, toast } from 'react-toastify';
-import {setPickerColor} from "./store/actions/toolsActions"
+import { setPickerColor } from "./store/actions/toolsActions"
 import 'react-toastify/dist/ReactToastify.css';
-
+import SignIn from './components/SignIn'
+import SignUp from './components/SignUp'
 
 class App extends Component {
   constructor(props) {
-    super(props);   
-    this.state = {   
+    super(props);
+    this.state = {
       showColorPicker: true,
     }
   }
-  
+
   render() {
-    
+
     return (
       <Router>
-        <Navbar/>
+        <Navbar />
         <ToastContainer
           autoClose={2000}
           position="top-center"
         />
         <Switch>
           <Route exact path='/' render={props =>
-            <main className='app-grid' style={{padding: '1rem'}}>
-              <section style={{border: '3px solid #181416'}}>
-                <Palette/>
-                <ContrastSuggestions/>
+            <main className='app-grid' style={{ padding: '1rem' }}>
+              <section style={{ border: '3px solid #181416' }}>
+                <Palette />
+                <ContrastSuggestions />
               </section>
-              <section style={{border: '3px solid #181416'}}>
+              <section style={{ border: '3px solid #181416' }}>
                 <ColorPickerDisplay
                   toggleShowColorPicker={this.toggleShowColorPicker}
                 />
-                <article style={{backgroundColor:this.props.pickerColor.hex}}>
+                <article style={{ backgroundColor: this.props.pickerColor.hex }}>
                   <ChromePicker
-                    color={ this.props.pickerColor}
-                    onChangeComplete={ this.props.setPickerColor }
+                    color={this.props.pickerColor}
+                    onChangeComplete={this.props.setPickerColor}
                   />
                 </article>
                 <ContrastChecker
@@ -56,10 +57,16 @@ class App extends Component {
             </main>
           } />
           <Route path='/examples'>
-            <SavedPalettes  addToPalette={this.addToPalette} />
+            <SavedPalettes addToPalette={this.addToPalette} />
           </Route>
           <Route path='/about'>
-            <About/>
+            <About />
+          </Route>
+          <Route path='/login'>
+            <SignIn />
+          </Route>
+          <Route path='/signup'>
+            <SignUp />
           </Route>
         </Switch>
       </Router>
@@ -72,7 +79,7 @@ const mapStateToProps = (state) => ({
   pickerColor: state.tools.pickerColor
 })
 const mapDispatchToProps = (dispatch) => {
-  return{
+  return {
     setPickerColor: (color) => dispatch(setPickerColor(color))
   }
 }
