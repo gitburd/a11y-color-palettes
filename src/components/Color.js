@@ -1,8 +1,8 @@
 /* eslint-disable indent */
 import React from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 import ReactTooltip from 'react-tooltip';
 import { useDispatch } from "react-redux";
 import { setContrastColor, setPickerColor } from "../store/actions/toolsActions";
@@ -23,7 +23,7 @@ const Color = ({
     const textHexColor = whiteHexContrast > blackHexContrast ? '#fff' : '#000';
 
     const onCopy = (hex) => {
-        toast.dark(` ${hex} copied `);
+        // toast.dark(` ${hex} copied `);
     }
 
     return (

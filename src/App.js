@@ -11,9 +11,9 @@ import { ChromePicker } from 'react-color'
 import Navbar from './components/Navbar'
 import About from './components/About'
 import { db } from './FirebaseDB'
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
 import { setPickerColor } from "./store/actions/toolsActions"
-import 'react-toastify/dist/ReactToastify.css';
+// import 'react-toastify/dist/ReactToastify.css';
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
 import UserPalettes from './components/UserPalettes'
@@ -31,10 +31,10 @@ class App extends Component {
     return (
       <Router>
         <Navbar />
-        <ToastContainer
+        {/* <ToastContainer
           autoClose={2000}
           position="top-center"
-        />
+        /> */}
         <Switch>
           <Route exact path='/' render={props =>
             <main className='app-grid' style={{ padding: '1rem' }}>
