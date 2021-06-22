@@ -3,6 +3,7 @@ import SavedPaletteColor from './SavedPaletteColor'
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { getPalettes } from "../store/actions/paletteActions"
 import { deletePalette } from "../store/actions/paletteActions";
+import { Redirect } from 'react-router-dom'
 
 const UserPalettes = () => {
     const { palettes, loadPalettes, authId } = useSelector(
@@ -24,6 +25,9 @@ const UserPalettes = () => {
         dispatch(getPalettes(authId))
     }, [authId, loadPalettes])
 
+    if (!authId) return (
+        <main><p>Login to view your saved palettes.</p></main>
+    )
     return (
         <main>
             <h1 style={{ padding: '0 20px', margin: '20px 0 0 0' }}>Saved Palettes</h1>

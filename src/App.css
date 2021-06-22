@@ -160,3 +160,55 @@ li a:hover:not(.active) {
   animation-name: unset;
   cursor: pointer;
 }
+
+.auth-form {
+  padding: 60px 0;
+}
+
+.auth-form form {
+  margin: 10px auto;
+  max-width: 400px;
+  padding:25px;
+  box-shadow: 0px 5px 17px -7px rgba(0, 0, 0, 0.5);
+}
+
+.auth-form input[type=email], input[type=password], input[type=text] {
+  width: 100%;
+  padding: 12px 10px;
+  margin-bottom: 25px;
+  margin-top:10px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.auth-form button {
+  background-color: #3A0D34;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.auth-form button:hover {
+  opacity: 0.8;
+}
+
+.auth-form label{font-weight: bold;}
+
+
+.disabled{
+  opacity: 0.7;
+}
+
+.auth-form .disabled:hover {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.red-text{
+  color:#9F0606;
+  font-weight: bold;
+}

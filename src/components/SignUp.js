@@ -7,8 +7,7 @@ class SignUp extends Component {
   state = {
     email: '',
     password: '',
-    firstName: '',
-    lastName: '',
+    passwordVarification: ''
   }
   handleChange = (e) => {
     this.setState({
@@ -19,34 +18,35 @@ class SignUp extends Component {
     e.preventDefault();
     this.props.signUp(this.state);
   }
+
+  emailIsVerified = () => {
+    return (this.state.password === this.state.passwordVarification &&
+      this.state.password.length >= 6)
+  }
+
   render() {
     const { auth, authError } = this.props;
     if (auth.uid) return <Redirect to='/' />
     return (
-      <div>
+      <div className="auth-form">
         <form onSubmit={this.handleSubmit}>
-          <h5>Sign Up</h5>
           <div>
             <label htmlFor="email">Email</label>
-            <input type="email" id='email' onChange={this.handleChange} />
+            <input type="email" id='email' onChange={this.handleChange} required />
           </div>
           <div>
             <label htmlFor="password">Password</label>
-            <input type="password" id='password' onChange={this.handleChange} />
+            <input type="password" id='password' onChange={this.handleChange} required pattern="\S{6,}" />
           </div>
           <div>
-            <label htmlFor="firstName">First Name</label>
-            <input type="text" id='firstName' onChange={this.handleChange} />
+            <label htmlFor="passwordVarification">Confirm Password</label>
+            <input type="password" id='passwordVarification' onChange={this.handleChange} required pattern="\S{6,}" />
           </div>
           <div>
-            <label htmlFor="lastName">Last Name</label>
-            <input type="text" id='lastName' onChange={this.handleChange} />
-          </div>
-          <div>
-            <button >Sign Up</button>
-            <div className="center red-text">
-              {authError ? <p>{authError}</p> : null}
-            </div>
+            {this.state.password.length < 6 && <p className="red-text">Password must be at least 6 characters.</p>}
+            {this.state.password !== this.state.passwordVarification && <p className="red-text">Passwords must match.</p>}
+            <button disabled={!this.emailIsVerified()} className={this.emailIsVerified() ? "" : "disabled"}>Sign Up</button>
+            <div>{authError ? <p className="red-text">{authError.message}</p> : null}</div>
           </div>
         </form>
       </div>

@@ -21,9 +21,8 @@ class SignIn extends Component {
     const { auth, authError } = this.props
     if (auth.uid) return <Redirect to='/' />
     return (
-      <div>
+      <div className="auth-form">
         <form onSubmit={this.handleSubmit}>
-          <h5>Sign In</h5>
           <div>
             <label htmlFor="email">Email</label>
             <input type="email" id='email' onChange={this.handleChange} />
@@ -34,7 +33,7 @@ class SignIn extends Component {
           </div>
           <div>
             <button>Login</button>
-            <div>{authError ? <p>{authError.message}</p> : null}</div>
+            <div>{authError ? <p className="red-text">{authError.message}</p> : null}</div>
           </div>
         </form>
       </div>
