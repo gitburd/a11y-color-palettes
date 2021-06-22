@@ -25,7 +25,7 @@ class SignUp extends Component {
   }
 
   render() {
-    const { auth, authError } = this.props;
+    const { auth, signupError } = this.props;
     if (auth.uid) return <Redirect to='/' />
     return (
       <div className="auth-form">
@@ -46,7 +46,7 @@ class SignUp extends Component {
             {this.state.password.length < 6 && <p className="red-text">Password must be at least 6 characters.</p>}
             {this.state.password !== this.state.passwordVarification && <p className="red-text">Passwords must match.</p>}
             <button disabled={!this.emailIsVerified()} className={this.emailIsVerified() ? "" : "disabled"}>Sign Up</button>
-            <div>{authError ? <p className="red-text">{authError.message}</p> : null}</div>
+            <div>{signupError ? <p className="red-text">{signupError.message}</p> : null}</div>
           </div>
         </form>
       </div>
@@ -57,7 +57,7 @@ class SignUp extends Component {
 const mapStateToProps = (state) => {
   return {
     auth: state.firebase.auth,
-    authError: state.auth.authError
+    signupError: state.auth.signupError
   }
 }
 

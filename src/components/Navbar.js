@@ -14,11 +14,11 @@ const Navbar = ({ auth }) => {
 
                 {links}
                 <li style={{ float: 'right' }}><Link to='about'>About</Link></li>
-                <li
+                {/* <li
                     style={{ float: 'right' }}
                 >
                     <Link to='/examples'>Examples</Link>
-                </li>
+                </li> */}
             </ul>
         </nav>
     );

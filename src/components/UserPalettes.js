@@ -26,7 +26,7 @@ const UserPalettes = () => {
     }, [authId, loadPalettes])
 
     if (!authId) return (
-        <main><p>Login to view your saved palettes.</p></main>
+        <main><h1 style={{ margin: "40vh auto", textAlign: 'center' }}>Login to view your saved palettes.</h1></main>
     )
     return (
         <main>

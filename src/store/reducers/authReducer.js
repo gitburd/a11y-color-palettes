@@ -2,7 +2,8 @@ import storage from "redux-persist/lib/storage/session";
 import { persistReducer } from "redux-persist";
 
 const initState = {
-    authError: null
+    signinError: null,
+    signupError: null
 }
 
 const persistConfig = {
@@ -16,13 +17,14 @@ const authReducer = (state = initState, action) => {
             console.log("AUTHERROR", action.err)
             return {
                 ...state,
-                authError: action.err
+                signinError: action.err
             }
 
         case 'SIGNIN_SUCCESS':
             return {
                 ...state,
-                authError: null
+                signinError: null,
+                signupError: null
             }
 
         case 'SIGNOUT_SUCCESS':
@@ -32,14 +34,15 @@ const authReducer = (state = initState, action) => {
             console.log('signup success')
             return {
                 ...state,
-                authError: null
+                signinError: null,
+                signupError: null
             }
 
         case 'SIGNUP_ERROR':
             console.log('signup error')
             return {
                 ...state,
-                authError: action.err
+                signupError: action.err
             }
         default:
             return state
