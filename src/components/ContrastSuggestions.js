@@ -1,8 +1,6 @@
 import React from 'react'
 import { getColorSuggetions } from '../helpers/ColorSuggestions'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
 import ReactTooltip from 'react-tooltip';
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { setPickerColor } from "../store/actions/toolsActions";
@@ -40,7 +38,7 @@ const ColorTemplate = ({ c, hex, onClick, onCopy }) => {
     )
 }
 
-const ContrastSuggestions = () => {
+const ContrastSuggestions = ({ showToast }) => {
     const dispatch = useDispatch();
     const { contrastColor, palette } = useSelector(
         (state) => ({
@@ -61,12 +59,11 @@ const ContrastSuggestions = () => {
 
     const onClick = (color) => {
         let pickerColor = { hex: color }
-        console.log("HERE?", pickerColor)
         dispatch(setPickerColor(pickerColor));
     }
 
     const onCopy = (c) => {
-        // toast.dark(`Copied ${c}`)
+        showToast('copy-color', c)
     }
 
     let warningHex;
@@ -102,13 +99,8 @@ const ContrastSuggestions = () => {
                                 <ColorTemplate key={1} c={suggestions[1]} hex={"#fff"} onClick={onClick} onCopy={onCopy} />
                                 <ColorTemplate key={2} c={suggestions[2]} hex={"#fff"} onClick={onClick} onCopy={onCopy} />
                             </>
-
                         )}
                     </article>
-                    {/* <ToastContainer
-                    autoClose={3000}
-                    position="top-center"
-                /> */}
                     <ReactTooltip place='top' effect='solid' />
                 </>
             }

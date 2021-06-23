@@ -5,7 +5,7 @@ import { getPalettes } from "../store/actions/paletteActions"
 import { deletePalette } from "../store/actions/paletteActions";
 import { Redirect } from 'react-router-dom'
 
-const UserPalettes = () => {
+const UserPalettes = ({ showToast }) => {
     const { palettes, loadPalettes, authId } = useSelector(
         (state) => ({
             palettes: state.palette.palettes,
@@ -47,7 +47,7 @@ const UserPalettes = () => {
                         {pal && pal.colors && pal.colors.length > 0
                             && pal.colors.map((color, idx) =>
                                 <SavedPaletteColor
-                                    key={idx} hex={color.hex} color={color}
+                                    key={idx} hex={color.hex} color={color} showToast={showToast}
                                 />
                             )}
                     </article>

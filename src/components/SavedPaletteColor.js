@@ -8,7 +8,7 @@ import { addToPalette } from "../store/actions/paletteActions";
 
 var wcagContrast = require("wcag-contrast")
 
-const SavedPaletteColor = ({ hex }) => {
+const SavedPaletteColor = ({ hex, showToast }) => {
     const dispatch = useDispatch();
 
     if (hex && hex !== null) {
@@ -17,11 +17,12 @@ const SavedPaletteColor = ({ hex }) => {
         let textHexColor = whiteHexContrast > blackHexContrast ? '#fff' : '#000';
 
         const onCopy = (hex) => {
-            // toast.dark(` ${hex} copied!`);
+
+            showToast('copy-color', hex)
         }
 
         const add = (hex) => {
-            // toast.dark(` ${hex} added to palette!`)
+            showToast('add-color', hex)
             let color = { hex }
             dispatch(addToPalette(color));
         }

@@ -1,13 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Color from './Color';
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
 import ReactTooltip from 'react-tooltip';
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { savePalette } from "../store/actions/paletteActions"
 
-const Palette = () => {
+const Palette = ({ showToast }) => {
   const { palette } = useSelector(
     (state) => ({
       palette: state.palette.palette
@@ -31,7 +29,7 @@ const Palette = () => {
   }
   const onSave = (palette) => {
     dispatch(savePalette(palette));
-    // toast.dark(`Saved to Examples`);
+    showToast('save-palette', null)
   }
   return (
     <article>
@@ -51,13 +49,10 @@ const Palette = () => {
             idx={idx}
             key={idx}
             color={color}
+            showToast={showToast}
           />
         ))
       )}
-      {/* <ToastContainer
-        autoClose={3000}
-        position="top-center"
-      /> */}
       <ReactTooltip place='top' effect='solid' />
     </article>
   )
