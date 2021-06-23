@@ -217,6 +217,13 @@ nav li a:hover{
   font-weight: bold;
 }
 
+.small-text{
+  font-size:13px;
+  /* margin-left: 10px; */
+  padding:2px;
+  float:right;
+}
+
 #empty-palette-msg{
   padding: 20px;
   box-shadow: 0px 5px 17px -7px rgba(0, 0, 0, 0.5);
@@ -333,7 +340,7 @@ nav li a:hover{
 @keyframes toast-in-right {
 	from {
 	  transform: translateX(100%);
-	  
+
 	}
 	to {
 	  transform: translateX(0);
@@ -343,7 +350,7 @@ nav li a:hover{
 @keyframes toast-in-left {
 	from {
 		transform: translateX(-100%);
-		
+
 	}
 	to {
 		transform: translateX(0);

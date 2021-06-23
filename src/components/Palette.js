@@ -6,9 +6,10 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { savePalette } from "../store/actions/paletteActions"
 
 const Palette = ({ showToast }) => {
-  const { palette } = useSelector(
+  const { palette, authId } = useSelector(
     (state) => ({
-      palette: state.palette.palette
+      palette: state.palette.palette,
+      authId: state.firebase.auth.uid
     }),
     shallowEqual
   );
@@ -31,16 +32,23 @@ const Palette = ({ showToast }) => {
     dispatch(savePalette(palette));
     showToast('save-palette', null)
   }
+
+  const save = authId ?
+    <i
+      onClick={() => onSave(palette)}
+      className="fa fa-floppy-o icon"
+      aria-hidden="true"
+      data-tip="save"
+      style={{ float: 'right' }}
+    ></i>
+    :
+    <span className="red-text small-text">*Signup/Login to save</span>
+
   return (
     <article>
       <h1 style={{ padding: '5px 20px', margin: '0' }}>
         Palette {' '}
-        <i
-          onClick={() => onSave(palette)}
-          className="fa fa-floppy-o icon"
-          aria-hidden="true"
-          data-tip="save"
-        ></i>
+        {save}
       </h1>
 
       {palette && palette.length > 0 && (
