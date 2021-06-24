@@ -43,6 +43,7 @@ export const getPalettes = (authId) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const palettes = []
+    console.log(authId)
     firestore.collection('palettes').where("userID", "==", `${authId}`).orderBy("created", 'desc').get()
       .then(function (querySnapshot) {
         let palette;
@@ -52,8 +53,10 @@ export const getPalettes = (authId) => {
           palette.id = doc.id
           palettes.push(palette)
         });
+        console.log("?", palettes)
         dispatch({ type: 'GET_PALETTES', palettes });
       }).catch((err) => {
+        console.log("error", err)
         dispatch({ type: 'GET_PALETTES_ERROR', err })
       })
   }
@@ -72,9 +75,9 @@ export const getExamplePalettes = () => {
           palette.id = doc.id
           palettes.push(palette)
         });
-        dispatch({ type: 'GET_PALETTES', palettes });
+        dispatch({ type: 'GET_EXAMPLE_PALETTES', palettes });
       }).catch((err) => {
-        dispatch({ type: 'GET_PALETTES_ERROR', err })
+        dispatch({ type: 'GET_EXAMPLE_PALETTES_ERROR', err })
       })
   }
 };

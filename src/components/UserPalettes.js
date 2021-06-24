@@ -29,7 +29,12 @@ const UserPalettes = ({ showToast }) => {
     )
     return (
         <main>
-            <h1 style={{ padding: '0 20px', margin: '20px 0 0 0' }}>Saved Palettes</h1>
+            {palettes && palettes.length > 0 && (
+                <h1 style={{ padding: '0 20px', margin: '20px 0 0 0' }}>Saved Palettes</h1>
+            )}
+            {palettes && palettes.length == 0 && (
+                <h1 style={{ padding: '0 20px', margin: '20px 0 0 0' }}>No Saved Palettes</h1>
+            )}
             <section className='saved-palette-grid'>
                 {palettes && palettes.length > 0 && palettes.map(pal =>
                     <article key={pal.id}>

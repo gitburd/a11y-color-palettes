@@ -4,7 +4,8 @@ import { persistReducer } from "redux-persist";
 const initState = {
   palette: [],
   palettes: [],
-  loadPalettes: false
+  loadPalettes: false,
+  examplePalettes: []
 };
 
 const persistConfig = {
@@ -36,6 +37,22 @@ const paletteReducer = (state = initState, action) => {
       return {
         ...state,
         palettes: action.palettes
+      };
+    case "GET_PALETTES_ERROR":
+      return {
+        ...state,
+        palettes: []
+      };
+    case "GET_EXAMPLE_PALETTES":
+      console.log("reducer!", action.palettes)
+      return {
+        ...state,
+        examplePalettes: action.palettes
+      };
+    case "GET_EXAMPLE_PALETTES_ERROR":
+      return {
+        ...state,
+        examplePalettes: []
       };
     case "DELETE_PALETTE":
       console.log("reducer!", action.paletteId)

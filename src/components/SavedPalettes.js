@@ -8,7 +8,7 @@ const SavedPalettes = ({ showToast }) => {
     const dispatch = useDispatch();
     const { palettes } = useSelector(
         (state) => ({
-            palettes: state.palette.palettes
+            palettes: state.palette.examplePalettes
         }),
         shallowEqual
     );
@@ -35,6 +35,12 @@ const SavedPalettes = ({ showToast }) => {
             { background: "#03392f", color: "#f6f6f6", border: "#1ee494", contrast: 11.92 },
             { background: "#03392f", color: "#1ee494", border: "#1ee494", contrast: 7.72 },
             { background: "#03392f", color: "#ff8a14", border: "#1ee494", contrast: 5.46 }
+        ],
+        [
+            { background: "#201e20", color: "#ddc3a5", border: "#ddc3a5", contrast: 9.80 },
+            { background: "#201e20", color: "#e0a96d", border: "#ddc3a5", contrast: 7.94 },
+            { background: "#561039", color: "#ddc3a5", border: "#ddc3a5", contrast: 8.13 },
+            { background: "#561039", color: "#e0a96d", border: "#ddc3a5", contrast: 6.58 }
         ],
         [
             { background: "#4a0e5c", color: "#ccf0c3", border: "#ccf0c3", contrast: 11.15 },
@@ -69,7 +75,7 @@ const SavedPalettes = ({ showToast }) => {
 
     return (
         <main>
-            <h1 style={{ padding: '20px' }} >Saved Palettes</h1>
+            <h1 style={{ padding: '20px' }} >Example Palettes</h1>
             <section className='saved-palette-grid'>
                 {palettes && palettes.length > 0 && palettes.map((pal, idx) =>
                     <article key={idx}>
@@ -80,8 +86,8 @@ const SavedPalettes = ({ showToast }) => {
                                 />
                             )}
                         <section style={{ margin: '20px', width: '200px' }}>
-                            {contrast[idx].map(row =>
-                                <p style={{ padding: "5px 15px", fontSize: "18px", margin: '0', backgroundColor: `${row.background}`, color: `${row.color}`, border: `1px solid ${row.border}` }}>
+                            {contrast[idx].map((row, i) =>
+                                <p key={idx + i} style={{ padding: "5px 15px", fontSize: "18px", margin: '0', backgroundColor: `${row.background}`, color: `${row.color}`, border: `1px solid ${row.border}` }}>
                                     CONTRAST: <b>{row.contrast}</b>
                                 </p>)
                             }

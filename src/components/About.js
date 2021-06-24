@@ -2,6 +2,8 @@
 import React from 'react';
 import paletteFromColor from '../video/paletteFromColor.mov'
 import paletteFromPalette from '../video/paletteFromPalette.mov'
+import palette_from_color from '../video/palette_from_color.mov'
+import palette_from_example from '../video/palette_from_example.mov'
 import { Link } from 'react-router-dom'
 
 const About = () => {
@@ -42,12 +44,12 @@ const About = () => {
                 <h2>Demos</h2>
                 <p>Making a palette from a color</p>
                 <video width="100%" controls >
-                    <source src={paletteFromColor} type="video/mp4" />
+                    <source src={palette_from_color} type="video/mp4" />
                 </video>
 
                 <p>Making a palette from an example palette</p>
                 <video width="100%" controls >
-                    <source src={paletteFromPalette} type="video/mp4" />
+                    <source src={palette_from_example} type="video/mp4" />
                 </video>
 
             </section>

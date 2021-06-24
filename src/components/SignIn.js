@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { signIn } from '../store/actions/authActions'
 import { Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class SignIn extends Component {
   state = {
@@ -36,6 +37,7 @@ class SignIn extends Component {
             <div>{signinError ? <p className="red-text">{signinError.message}</p> : null}</div>
           </div>
         </form>
+        <p style={{ textAlign: "center", margin: "30px", color: "#3A0D34" }}>New? <Link to='/signup'>Signup</Link></p>
       </div>
     )
   }
