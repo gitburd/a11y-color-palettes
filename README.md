@@ -14,7 +14,7 @@
 
 ![image](https://github.com/gitburd/a11y-color-palettes/blob/master/public/images/screenShot1.png)
 ![image](https://github.com/gitburd/a11y-color-palettes/blob/master/public/images/screenShot2.png)
-![image](https://github.com/gitburd/a11y-color-palettes/blob/master/public/images/screenShot3.png)
+![image](https://github.com/gitburd/a11y-color-palettes/blob/master/public/images/screenShot4.png)
 
 <br />
 

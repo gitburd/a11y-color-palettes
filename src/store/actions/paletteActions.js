@@ -43,7 +43,7 @@ export const getPalettes = (authId) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const palettes = []
-    firestore.collection('palettes').where("userID", "==", `${authId}`).get()
+    firestore.collection('palettes').where("userID", "==", `${authId}`).orderBy("created", 'desc').get()
       .then(function (querySnapshot) {
         let palette;
         querySnapshot.forEach(function (doc) {
@@ -59,6 +59,25 @@ export const getPalettes = (authId) => {
   }
 };
 
+export const getExamplePalettes = () => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+    const palettes = []
+    firestore.collection('palettes').where("userID", "==", "example").get()
+      .then(function (querySnapshot) {
+        let palette;
+        querySnapshot.forEach(function (doc) {
+          // doc.data() is never undefined for query doc snapshots
+          palette = doc.data();
+          palette.id = doc.id
+          palettes.push(palette)
+        });
+        dispatch({ type: 'GET_PALETTES', palettes });
+      }).catch((err) => {
+        dispatch({ type: 'GET_PALETTES_ERROR', err })
+      })
+  }
+};
 
 export const deletePalette = (id) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {

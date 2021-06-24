@@ -3,7 +3,6 @@ import SavedPaletteColor from './SavedPaletteColor'
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { getPalettes } from "../store/actions/paletteActions"
 import { deletePalette } from "../store/actions/paletteActions";
-import { Redirect } from 'react-router-dom'
 
 const UserPalettes = ({ showToast }) => {
     const { palettes, loadPalettes, authId } = useSelector(
