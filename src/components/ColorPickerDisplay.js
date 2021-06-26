@@ -40,7 +40,7 @@ const ColorPickerDisplay = () => {
           </p>
         </CopyToClipboard>
         <p className="display-btn" onClick={() => dispatch(setBackgroundColor(color))}>
-          Backgorund
+          Background
         </p>
         <p className="display-btn" onClick={() => dispatch(setTextColor(color))}>
           Text Color
